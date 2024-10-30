@@ -3,6 +3,7 @@ import { createClient } from "microcms-js-sdk";
 export type Article = {
   title: string;
   content: string;
+  description: string;
 };
 
 if (!process.env.SERVICE_DOMAIN) {
@@ -19,9 +20,12 @@ export const client = createClient({
 });
 
 // ブログ一覧を取得
-export const getArticles = async () => {
+export const getArticles = async (limit: number) => {
   const articles = await client.getList<Article>({
     endpoint: "articles",
+    queries: {
+      limit,
+    },
   });
   return articles;
 };

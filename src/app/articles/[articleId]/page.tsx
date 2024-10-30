@@ -1,17 +1,16 @@
 import { getArticleDetail, getArticles } from "@/libs/client";
 
 export async function generateStaticParams() {
-  const { contents } = await getArticles();
+  const { contents } = await getArticles(100);
   return contents.map((article) => ({
     articleId: article.id,
   }));
 }
 
-export default async function StaticDetailPage({
-  params,
-}: {
-  params: { articleId: string };
+export default async function StaticDetailPage(props: {
+  params: Promise<{ articleId: string }>;
 }) {
+  const params = await props.params;
   const articleId = await params.articleId;
   const article = await getArticleDetail(articleId);
 

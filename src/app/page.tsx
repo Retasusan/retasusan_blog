@@ -1,8 +1,15 @@
 import Image from "next/image";
 import icon from "@/public/icon/icon.jpeg";
 import Link from "next/link";
+import { getArticles } from "@/libs/client";
 
-export default function page() {
+export default async function page() {
+  const { contents } = await getArticles(5);
+
+  if (!contents) {
+    return <h1>No Contents</h1>;
+  }
+
   return (
     <div className="bg-base text-gray-800 w-full">
       {/* ヒーローセクション */}
@@ -22,22 +29,22 @@ export default function page() {
       <section className="w-[70%] min-w-[600px] max-w-[1000px] mx-auto">
         {/* 記事セクション */}
         <section id="articles" className="p-10 bg-base">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-5">記事</h2>
-          <div className="grid grid-cols-auto-fit-400 gap-6">
+          <h2 className="text-2xl font-semibold text-gray-700 mb-5">
+            最近の記事
+          </h2>
+          <div className="grid grid-cols-auto-fit-300 gap-6">
             {/* 記事カード */}
-            {[...Array(4)].map((_, i) => (
+            {contents?.map((article) => (
               <div
-                key={i}
+                key={article.id}
                 className="bg-accentGray p-5 rounded-lg shadow hover:shadow-lg transition"
               >
                 <h3 className="text-xl font-semibold text-accentBlue">
-                  記事タイトル {i + 1}
+                  {article.title}
                 </h3>
-                <p className="mt-2 text-gray-600">
-                  これは記事の簡単な説明です。
-                </p>
+                <p className="mt-2 text-gray-600">{article.description}</p>
                 <Link
-                  href="/"
+                  href={`/articles/${article.id}`}
                   className="mt-3 inline-block text-gray-600 hover:underline"
                 >
                   続きを読む
@@ -50,7 +57,7 @@ export default function page() {
         {/* お知らせセクション */}
         <section id="announcements" className="p-10 bg-white">
           <h2 className="text-2xl font-semibold text-gray-700 mb-5">
-            お知らせ
+            最近のお知らせ
           </h2>
           <ul className="space-y-3">
             {[...Array(3)].map((_, i) => (

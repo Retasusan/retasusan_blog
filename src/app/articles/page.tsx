@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getArticles } from "@/libs/client";
 
 export default async function page() {
-  const { contents } = await getArticles();
+  const { contents } = await getArticles(100);
 
   if (!contents) {
     return <h1>No Contents</h1>;
@@ -28,7 +28,7 @@ export default async function page() {
               <h3 className="text-xl font-semibold text-accentBlue">
                 {article.title}
               </h3>
-              <p className="mt-2 text-gray-600">これは記事の簡単な説明です。</p>
+              <p className="mt-2 text-gray-600">{article.description}</p>
               <Link
                 href={`/articles/${article.id}`}
                 className="mt-3 inline-block text-gray-600 hover:underline"
