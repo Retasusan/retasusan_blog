@@ -1,10 +1,8 @@
-// pages/index.tsx
-import type { NextPage } from "next";
 import Image from "next/image";
 import icon from "@/public/icon/icon.jpeg";
 import Link from "next/link";
 
-const Home: NextPage = () => {
+export default function page() {
   return (
     <div className="bg-base text-gray-800 w-full">
       {/* ヒーローセクション */}
@@ -38,12 +36,12 @@ const Home: NextPage = () => {
                 <p className="mt-2 text-gray-600">
                   これは記事の簡単な説明です。
                 </p>
-                <a
-                  href="#"
+                <Link
+                  href="/"
                   className="mt-3 inline-block text-gray-600 hover:underline"
                 >
                   続きを読む
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -96,6 +94,4 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
-};
-
-export default Home;
+}
