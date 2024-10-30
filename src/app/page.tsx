@@ -23,7 +23,7 @@ export default function page() {
         {/* 記事セクション */}
         <section id="articles" className="p-10 bg-base">
           <h2 className="text-2xl font-semibold text-gray-700 mb-5">記事</h2>
-          <div className="grid grid-cols-auto-fit-250 gap-6">
+          <div className="grid grid-cols-auto-fit-400 gap-6">
             {/* 記事カード */}
             {[...Array(4)].map((_, i) => (
               <div
