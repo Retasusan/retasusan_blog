@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { getArticles } from "@/libs/client";
 
-export default function page() {
+export default async function page() {
+  const { contents } = await getArticles();
+
+  if (!contents) {
+    return <h1>No Contents</h1>;
+  }
+
   return (
     <div className="bg-base text-gray-800">
       {/* ページタイトル */}
@@ -13,17 +20,17 @@ export default function page() {
       <section className="w-[70%] min-w-[600px] max-w-[1000px] mx-auto m-10">
         <div className="">
           {/* 記事カード */}
-          {[...Array(10)].map((_, i) => (
+          {contents?.map((article) => (
             <div
-              key={i}
+              key={article.id}
               className="bg-accentGray p-5 m-7 rounded-lg shadow hover:shadow-lg transition"
             >
               <h3 className="text-xl font-semibold text-accentBlue">
-                記事タイトル {i + 1}
+                {article.title}
               </h3>
               <p className="mt-2 text-gray-600">これは記事の簡単な説明です。</p>
               <Link
-                href="/"
+                href={`/articles/${article.id}`}
                 className="mt-3 inline-block text-gray-600 hover:underline"
               >
                 続きを読む
@@ -35,7 +42,7 @@ export default function page() {
 
       {/* フッター */}
       <footer className="p-5 bg-gray-200 text-center">
-        <p>&copy; 2024 My Blog. All rights reserved.</p>
+        <p>&copy; 2024 My article. All rights reserved.</p>
       </footer>
     </div>
   );
