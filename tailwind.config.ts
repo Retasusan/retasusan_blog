@@ -9,8 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        base: "#ffffff", // 白
+        accentGray: "#e7eaf0", // グレー
+        accentBlue: "#538cfd", // 水色
+        accentGreen: "#46dcb9", // 緑
+      },
+      gridTemplateColumns: {
+        "auto-fit-250": "repeat(auto-fit, minmax(250px, 1fr))",
       },
     },
   },
