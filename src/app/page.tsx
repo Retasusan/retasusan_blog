@@ -1,12 +1,13 @@
 import Image from "next/image";
 import icon from "@/public/icon/icon.jpeg";
 import Link from "next/link";
-import { getArticles } from "@/libs/client";
+import { getArticles, getNotifications } from "@/libs/client";
 
 export default async function page() {
-  const { contents } = await getArticles(5);
+  const articles = await getArticles(5);
+  const notifications = await getNotifications(5);
 
-  if (!contents) {
+  if (!articles || !notifications) {
     return <h1>No Contents</h1>;
   }
 
@@ -34,9 +35,9 @@ export default async function page() {
           </h2>
           <div className="grid grid-cols-auto-fit-300 gap-6">
             {/* 記事カード */}
-            {contents?.map((article) => (
+            {articles.contents?.map((article, i) => (
               <div
-                key={article.id}
+                key={i}
                 className="bg-accentGray p-5 rounded-lg shadow hover:shadow-lg transition"
               >
                 <h3 className="text-xl font-semibold text-accentBlue">
@@ -60,17 +61,21 @@ export default async function page() {
             最近のお知らせ
           </h2>
           <ul className="space-y-3">
-            {[...Array(3)].map((_, i) => (
+            {notifications.contents.map((notification, i) => (
               <li
                 key={i}
                 className="p-4 bg-accentGray rounded shadow-md hover:shadow-lg"
               >
                 <h3 className="text-accentBlue font-semibold">
-                  お知らせ {i + 1}
+                  {notification.title}
                 </h3>
-                <p className="text-gray-600">
-                  お知らせの内容がここに入ります。
-                </p>
+                <p className="text-gray-600">{notification.description}</p>
+                <Link
+                  href={`/notifications/${notification.id}`}
+                  className="mt-3 inline-block text-gray-600 hover:underline"
+                >
+                  続きを読む
+                </Link>
               </li>
             ))}
           </ul>

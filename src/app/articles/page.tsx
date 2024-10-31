@@ -42,7 +42,7 @@ export default async function page() {
 
       {/* フッター */}
       <footer className="p-5 bg-gray-200 text-center">
-        <p>&copy; 2024 My article. All rights reserved.</p>
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
       </footer>
     </div>
   );
