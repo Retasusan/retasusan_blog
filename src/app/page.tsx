@@ -18,12 +18,6 @@ export default async function page() {
         <div className="w-[60%] min-w-[525px] max-w-[] mx-auto">
           <h2 className="text-3xl font-bold">ようこそ！</h2>
           <p className="mt-2">最新の記事やお知らせをご覧ください。</p>
-          <Link
-            href="/articles"
-            className="mt-5 inline-block bg-accentGreen text-white py-2 px-4 rounded hover:bg-white hover:text-accentGreen"
-          >
-            最新記事を見る
-          </Link>
         </div>
       </section>
 

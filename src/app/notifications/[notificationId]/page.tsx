@@ -11,7 +11,7 @@ export default async function StaticDetailPage(props: {
   params: Promise<{ notificationId: string }>;
 }) {
   const params = await props.params;
-  const notificationId = await params.notificationId;
+  const notificationId = params.notificationId;
   const notification = await getNotificationDetail(notificationId);
 
   return (

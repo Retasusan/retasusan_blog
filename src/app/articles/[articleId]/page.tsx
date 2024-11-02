@@ -1,4 +1,5 @@
 import { getArticleDetail, getArticles } from "@/libs/client";
+import "./style.css";
 
 export async function generateStaticParams() {
   const { contents } = await getArticles(100);
@@ -11,7 +12,7 @@ export default async function StaticDetailPage(props: {
   params: Promise<{ articleId: string }>;
 }) {
   const params = await props.params;
-  const articleId = await params.articleId;
+  const articleId = params.articleId;
   const article = await getArticleDetail(articleId);
 
   return (

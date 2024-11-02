@@ -12,8 +12,10 @@ export default async function page() {
     <div className="bg-base text-gray-800">
       {/* ページタイトル */}
       <section className="p-10 text-center bg-accentBlue">
-        <h2 className="text-3xl font-bold text-white">記事一覧</h2>
-        <p className="text-white mt-2">すべての記事を一覧でご覧いただけます</p>
+        <h2 className="text-3xl font-bold text-white">お知らせ一覧</h2>
+        <p className="text-white mt-2">
+          すべてのお知らせを一覧でご覧いただけます
+        </p>
       </section>
 
       {/* 記事リスト */}
