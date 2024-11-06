@@ -1,5 +1,6 @@
 import { getArticleDetail, getArticles } from "@/libs/client";
 import "./style.css";
+import SyntaxHilighter from "@/app/components/SyntaxHilighter/SyntaxHilighter";
 
 export async function generateStaticParams() {
   const { contents } = await getArticles(100);
@@ -21,11 +22,7 @@ export default async function StaticDetailPage(props: {
         <h1 className="mb-5">{article.title}</h1>
         <p>{`${article.createdAt}　:　${article.updatedAt}`}</p>
       </div>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${article.content}`,
-        }}
-      />
+      <SyntaxHilighter content={article.content} />
     </>
   );
 }
