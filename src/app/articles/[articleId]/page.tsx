@@ -17,7 +17,10 @@ export default async function StaticDetailPage(props: {
 
   return (
     <>
-      <p>{article.title}</p>
+      <div className="mb-10">
+        <h1 className="mb-5">{article.title}</h1>
+        <p>{`${article.createdAt}　:　${article.updatedAt}`}</p>
+      </div>
       <div
         dangerouslySetInnerHTML={{
           __html: `${article.content}`,

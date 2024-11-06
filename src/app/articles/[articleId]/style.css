@@ -31,6 +31,10 @@
     @apply my-4 mx-2 bg-gray-800 text-white p-4 rounded-lg;
   }
 
+  :not(pre) > code {
+    @apply bg-slate-400 text-white italic;
+  }
+
   blockquote {
     @apply my-3 ml-2 pl-4 text-[#858484] italic relative;
   }
