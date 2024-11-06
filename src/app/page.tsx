@@ -1,8 +1,16 @@
 import Image from "next/image";
 import icon from "@/public/icon/icon.jpeg";
 import Link from "next/link";
+import { getArticles, getNotifications } from "@/libs/client";
 
-export default function page() {
+export default async function page() {
+  const articles = await getArticles(5);
+  const notifications = await getNotifications(5);
+
+  if (!articles || !notifications) {
+    return <h1>No Contents</h1>;
+  }
+
   return (
     <div className="bg-base text-gray-800 w-full">
       {/* ヒーローセクション */}
@@ -10,34 +18,28 @@ export default function page() {
         <div className="w-[60%] min-w-[525px] max-w-[] mx-auto">
           <h2 className="text-3xl font-bold">ようこそ！</h2>
           <p className="mt-2">最新の記事やお知らせをご覧ください。</p>
-          <Link
-            href="/articles"
-            className="mt-5 inline-block bg-accentGreen text-white py-2 px-4 rounded hover:bg-white hover:text-accentGreen"
-          >
-            最新記事を見る
-          </Link>
         </div>
       </section>
 
       <section className="w-[70%] min-w-[600px] max-w-[1000px] mx-auto">
         {/* 記事セクション */}
         <section id="articles" className="p-10 bg-base">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-5">記事</h2>
-          <div className="grid grid-cols-auto-fit-250 gap-6">
+          <h2 className="text-2xl font-semibold text-gray-700 mb-5">
+            最近の記事
+          </h2>
+          <div className="grid grid-cols-auto-fit-300 gap-6">
             {/* 記事カード */}
-            {[...Array(4)].map((_, i) => (
+            {articles.contents?.map((article, i) => (
               <div
                 key={i}
                 className="bg-accentGray p-5 rounded-lg shadow hover:shadow-lg transition"
               >
                 <h3 className="text-xl font-semibold text-accentBlue">
-                  記事タイトル {i + 1}
+                  {article.title}
                 </h3>
-                <p className="mt-2 text-gray-600">
-                  これは記事の簡単な説明です。
-                </p>
+                <p className="mt-2 text-gray-600">{article.description}</p>
                 <Link
-                  href="/"
+                  href={`/articles/${article.id}`}
                   className="mt-3 inline-block text-gray-600 hover:underline"
                 >
                   続きを読む
@@ -50,20 +52,24 @@ export default function page() {
         {/* お知らせセクション */}
         <section id="announcements" className="p-10 bg-white">
           <h2 className="text-2xl font-semibold text-gray-700 mb-5">
-            お知らせ
+            最近のお知らせ
           </h2>
           <ul className="space-y-3">
-            {[...Array(3)].map((_, i) => (
+            {notifications.contents.map((notification, i) => (
               <li
                 key={i}
                 className="p-4 bg-accentGray rounded shadow-md hover:shadow-lg"
               >
                 <h3 className="text-accentBlue font-semibold">
-                  お知らせ {i + 1}
+                  {notification.title}
                 </h3>
-                <p className="text-gray-600">
-                  お知らせの内容がここに入ります。
-                </p>
+                <p className="text-gray-600">{notification.description}</p>
+                <Link
+                  href={`/notifications/${notification.id}`}
+                  className="mt-3 inline-block text-gray-600 hover:underline"
+                >
+                  続きを読む
+                </Link>
               </li>
             ))}
           </ul>
