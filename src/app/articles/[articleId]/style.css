@@ -28,7 +28,7 @@
   }
 
   pre {
-    @apply my-4 mx-2 bg-gray-800 text-white p-4 rounded-lg overflow-scroll;
+    @apply w-full max-w-[1000px] my-4 mx-auto bg-gray-800 text-white p-4 rounded-lg overflow-scroll;
   }
 
   :not(pre) > code {
