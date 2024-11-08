@@ -15,12 +15,15 @@ export default async function StaticDetailPage(props: {
   const params = await props.params;
   const articleId = params.articleId;
   const article = await getArticleDetail(articleId);
+  const createDate = article.createdAt.slice(0, 10);
+  const updateDate = article.updatedAt.slice(0, 10);
 
   return (
     <>
       <div className="mb-10">
         <h1 className="mb-5">{article.title}</h1>
-        <p>{`${article.createdAt}　:　${article.updatedAt}`}</p>
+        <p>{`created Date:${createDate}`}</p>
+        <p>{`updatedDate:${updateDate}`}</p>
       </div>
       <SyntaxHilighter content={article.content} />
     </>
