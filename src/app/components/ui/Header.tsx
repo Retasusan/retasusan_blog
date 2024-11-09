@@ -8,7 +8,7 @@ export default function Header() {
           Retasusan&apos;s Blog
         </h1>
       </Link>
-      <nav className="flex gap-5">
+      <nav className="flex gap-5 text-xl">
         <div className="text-accentBlue hover:text-[#89d7ef] hover:underline">
           <Link href="/articles">記事</Link>
         </div>

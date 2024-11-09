@@ -12,7 +12,7 @@ export default async function page() {
   }
 
   return (
-    <div className="bg-base text-gray-800 w-full pb-16 min-h-screen">
+    <div className="bg-base text-gray-800 w-full min-h-screen">
       {/* ヒーローセクション */}
       <section className="p-10 text-gray-500 text-center">
         <div className="w-[60%] min-w-[525px] mx-auto">
