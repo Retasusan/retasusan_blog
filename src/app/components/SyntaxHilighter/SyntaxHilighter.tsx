@@ -1,8 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 import "prismjs/components/prism-markdown";
+import "prismjs/plugins/line-numbers/prism-line-numbers";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import "prismjs/plugins/toolbar/prism-toolbar";
+import "prismjs/plugins/toolbar/prism-toolbar.css";
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-c";
@@ -15,41 +20,33 @@ type Props = {
   content: string;
 };
 
-const highlight = (code: string, language = "markup") => {
-  return Prism.highlight(code, Prism.languages[language], language);
-};
-
-const processContent = (content: string): string => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(content, "text/html");
-
-  const codeElements = doc.querySelectorAll("div[data-filename] pre code");
-
-  codeElements.forEach((element) => {
-    const language = element.classList[0]?.slice(9); // "language-" を取り除く
-    if (language) {
-      const code = element.textContent || "";
-      const highlightedCode = highlight(code, language);
-      element.innerHTML = highlightedCode;
-    }
-  });
-
-  return doc.body.innerHTML;
-};
-
 export default function SyntaxHighlighter({ content }: Props) {
-  const [highlightedContent, setHighlightedContent] = useState<string>(() =>
-    processContent(content)
-  );
+  const [isClient, setIsClient] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setHighlightedContent(processContent(content));
-  }, [content]);
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && containerRef.current) {
+      containerRef.current.querySelectorAll("pre code").forEach((block) => {
+        block.classList.add("line-numbers", "copy-to-clipboard"); // プラグインのクラスを追加
+        Prism.highlightElement(block);
+      });
+    }
+  }, [isClient, content]);
+
+  if (!isClient) {
+    return <div>Loading the content...</div>;
+  }
 
   return (
     <div
+      ref={containerRef}
+      className="prose"
       dangerouslySetInnerHTML={{
-        __html: highlightedContent,
+        __html: content,
       }}
     />
   );
