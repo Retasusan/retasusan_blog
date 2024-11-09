@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { getNotifications } from "@/libs/client";
 
-export default function page() {
+export default async function page() {
+  const { contents } = await getNotifications(100);
+
+  if (!contents) {
+    return <h1>No Contents</h1>;
+  }
+
   return (
     <div className="bg-base text-gray-800">
       {/* ページタイトル */}
@@ -15,19 +22,17 @@ export default function page() {
       <section className="w-[70%] min-w-[600px] max-w-[1000px] mx-auto m-10">
         <div className="">
           {/* 記事カード */}
-          {[...Array(10)].map((_, i) => (
+          {contents?.map((notification) => (
             <div
-              key={i}
+              key={notification.id}
               className="bg-accentGray p-5 m-7 rounded-lg shadow hover:shadow-lg transition"
             >
               <h3 className="text-xl font-semibold text-accentBlue">
-                お知らせタイトル {i + 1}
+                {notification.title}
               </h3>
-              <p className="mt-2 text-gray-600">
-                これはお知らせの簡単な説明です。
-              </p>
+              <p className="mt-2 text-gray-600">{notification.description}</p>
               <Link
-                href="/"
+                href={`/Notifications/${notification.id}`}
                 className="mt-3 inline-block text-gray-600 hover:underline"
               >
                 続きを読む

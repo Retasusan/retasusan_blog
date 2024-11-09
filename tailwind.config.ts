@@ -1,6 +1,10 @@
 import type { Config } from "tailwindcss";
+import daisyui from "daisyui";
 
 const config: Config = {
+  daisyui: {
+    themes: ["corporate"],
+  },
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,10 +19,10 @@ const config: Config = {
         accentGreen: "#46dcb9", // 緑
       },
       gridTemplateColumns: {
-        "auto-fit-250": "repeat(auto-fit, minmax(250px, 1fr))",
+        "auto-fit-300": "repeat(auto-fit, minmax(300px, 1fr))",
       },
     },
   },
-  plugins: [],
+  plugins: [daisyui],
 };
 export default config;
