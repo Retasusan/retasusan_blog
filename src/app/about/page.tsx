@@ -3,7 +3,7 @@ import icon from "@/public/icon/icon.jpeg";
 
 export default function page() {
   return (
-    <div className="bg-base text-gray-800">
+    <div className="bg-base text-gray-800 min-h-screen">
       {/* ページタイトル */}
       <section className="p-10 text-center bg-accentBlue">
         <h2 className="text-3xl font-bold text-white">筆者について</h2>
@@ -36,11 +36,6 @@ export default function page() {
           このブログでは、プログラミングやインターネットセキュリティに関する情報を共有し、読者が新しい視点や知識を得られるよう心掛けています。
         </p>
       </section>
-
-      {/* フッター */}
-      <footer className="p-5 bg-gray-200 text-center">
-        <p>&copy; 2024 My Blog. All rights reserved.</p>
-      </footer>
     </div>
   );
 }

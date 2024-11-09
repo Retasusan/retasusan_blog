@@ -4,24 +4,51 @@ import Link from "next/link";
 import { getArticles, getNotifications } from "@/libs/client";
 
 export default async function page() {
-  const articles = await getArticles(5);
-  const notifications = await getNotifications(5);
+  const articles = await getArticles(6);
+  const notifications = await getNotifications(6);
 
   if (!articles || !notifications) {
     return <h1>No Contents</h1>;
   }
 
   return (
-    <div className="bg-base text-gray-800 w-full">
+    <div className="bg-base text-gray-800 w-full pb-16 min-h-screen">
       {/* ヒーローセクション */}
-      <section className="p-10 bg-accentBlue text-white text-center">
-        <div className="w-[60%] min-w-[525px] max-w-[] mx-auto">
+      <section className="p-10 text-gray-500 text-center">
+        <div className="w-[60%] min-w-[525px] mx-auto">
           <h2 className="text-3xl font-bold">ようこそ！</h2>
-          <p className="mt-2">最新の記事やお知らせをご覧ください。</p>
+          <p className="mt-2 text-xl">最新の記事やお知らせ一覧</p>
         </div>
       </section>
 
       <section className="w-[70%] min-w-[600px] max-w-[1000px] mx-auto">
+        {/* 筆者について */}
+        <Link href="/about">
+          <section id="articles" className="p-10 bg-base">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-5">
+              筆者について
+            </h2>
+            <div className="grid grid-cols-auto-fit-300 gap-6">
+              {/* 自己紹介カード */}
+              <div className="bg-accentGray p-5 rounded-lg shadow hover:shadow-lg transition">
+                <div className="flex gap-6">
+                  <Image
+                    src={icon}
+                    alt="icon"
+                    width={70}
+                    height={70}
+                    className="rounded-full my-3"
+                  />
+                  <div className="text-gray-600">
+                    <div className="text-2xl">Retasusan</div>
+                    <p>ネットワークに興味がある大学生</p>
+                    <div>アイコン置き場</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </Link>
         {/* 記事セクション */}
         <section id="articles" className="p-10 bg-base">
           <h2 className="text-2xl font-semibold text-gray-700 mb-5">
@@ -50,54 +77,32 @@ export default async function page() {
         </section>
 
         {/* お知らせセクション */}
-        <section id="announcements" className="p-10 bg-white">
+        <section id="articles" className="p-10 bg-base">
           <h2 className="text-2xl font-semibold text-gray-700 mb-5">
             最近のお知らせ
           </h2>
-          <ul className="space-y-3">
-            {notifications.contents.map((notification, i) => (
-              <li
+          <div className="grid grid-cols-auto-fit-300 gap-6">
+            {/* 記事カード */}
+            {notifications.contents?.map((notification, i) => (
+              <div
                 key={i}
-                className="p-4 bg-accentGray rounded shadow-md hover:shadow-lg"
+                className="bg-accentGray p-5 rounded-lg shadow hover:shadow-lg transition"
               >
-                <h3 className="text-accentBlue font-semibold">
+                <h3 className="text-xl font-semibold text-accentBlue">
                   {notification.title}
                 </h3>
-                <p className="text-gray-600">{notification.description}</p>
+                <p className="mt-2 text-gray-600">{notification.description}</p>
                 <Link
-                  href={`/notifications/${notification.id}`}
+                  href={`/articles/${notification.id}`}
                   className="mt-3 inline-block text-gray-600 hover:underline"
                 >
                   続きを読む
                 </Link>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </section>
       </section>
-
-      {/* 筆者についてセクション */}
-      <section
-        id="about"
-        className="p-10 bg-accentGreen text-center flex flex-col"
-      >
-        <h2 className="text-2xl font-semibold justify-center">筆者について</h2>
-        <Image
-          src={icon}
-          alt="icon"
-          width={100}
-          height={100}
-          className="rounded-full mx-auto my-3"
-        />
-        <p className="mt-5 max-w-lg mx-auto justify-center">
-          ここに筆者の簡単なプロフィールや自己紹介が入ります。ブログのテーマや目的などについても触れてください。
-        </p>
-      </section>
-
-      {/* フッター */}
-      <footer className="p-5 bg-gray-200 text-center">
-        <p>&copy; 2024 My Blog. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
