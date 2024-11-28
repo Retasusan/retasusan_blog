@@ -1,31 +1,48 @@
-// Next.jsのAPIルートで使用されるリクエストとレスポンスの型をインポート
-import type { NextApiRequest, NextApiResponse } from "next";
-import crypto from "crypto";
+import { revalidateTag } from "next/cache";
+import { NextResponse } from "next/server";
+import * as crypto from "crypto";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export async function POST(request: Request): Promise<Response> {
+  const bodyText = await request.text();
+  const bodyBuffer = Buffer.from(bodyText, "utf-8");
+
   const secret = process.env.MICROCMS_WEBHOOK_SIGNATURE_SECRET;
-  if (req.method !== "POST") return res.status(405).send("Method not allowed");
-  if (!req.headers["x-microcms-signature"])
-    return res.status(401).send("Invalid signature");
-  if (!secret) return res.status(500).send("Server configuration error");
+  console.log(secret);
+  if (!secret) {
+    console.error("Secret is empty.");
+    return NextResponse.json({ message: "Server error" }, { status: 500 });
+  }
 
-  const signature = req.headers["x-microcms-signature"] as string;
-  // シークレット値とリクエストボディをハッシュ化
+  const signature = request.headers.get("X-MICROCMS-Signature");
+  if (!signature) {
+    console.error("Signature is empty.");
+    return NextResponse.json({ message: "Signature missing" }, { status: 400 });
+  }
+
   const expectedSignature = crypto
     .createHmac("sha256", secret)
-    .update(JSON.stringify(req.body))
+    .update(bodyBuffer)
     .digest("hex");
 
-  if (signature !== expectedSignature)
-    return res.status(401).send("Invalid signature");
+  if (
+    Buffer.from(signature).length !== Buffer.from(expectedSignature).length ||
+    !crypto.timingSafeEqual(
+      Buffer.from(signature),
+      Buffer.from(expectedSignature)
+    )
+  ) {
+    console.error("Invalid signature.");
+    return NextResponse.json({ message: "Invalid signature" }, { status: 400 });
+  }
 
   try {
-    await res.revalidate("/projects");
-    return res.status(200).send("Revalidated");
-  } catch {
-    return res.status(500).send("Error revalidating");
+    revalidateTag("articles");
+    return NextResponse.json({ message: "success" });
+  } catch (error) {
+    console.error("Revalidation error:", error);
+    return NextResponse.json(
+      { message: "Revalidation failed" },
+      { status: 500 }
+    );
   }
 }
