@@ -9,17 +9,13 @@ export async function POST(request: Request): Promise<Response> {
   const secret = process.env.MICROCMS_WEBHOOK_SIGNATURE_SECRET;
   if (!secret) {
     console.error("Secret is empty.");
-    return NextResponse.json({
-      status: 500,
-    });
+    return NextResponse.json({ message: "Server error" }, { status: 500 });
   }
 
   const signature = request.headers.get("X-MICROCMS-Signature");
   if (!signature) {
     console.error("Signature is empty.");
-    return NextResponse.json({
-      status: 400,
-    });
+    return NextResponse.json({ message: "Signature missing" }, { status: 400 });
   }
 
   const expectedSignature = crypto
@@ -27,18 +23,25 @@ export async function POST(request: Request): Promise<Response> {
     .update(bodyBuffer)
     .digest("hex");
 
-  const isValid = crypto.timingSafeEqual(
-    Buffer.from(signature),
-    Buffer.from(expectedSignature)
-  );
-
-  if (!isValid) {
+  if (
+    Buffer.from(signature).length !== Buffer.from(expectedSignature).length ||
+    !crypto.timingSafeEqual(
+      Buffer.from(signature),
+      Buffer.from(expectedSignature)
+    )
+  ) {
     console.error("Invalid signature.");
-    return NextResponse.json({
-      status: 400,
-    });
+    return NextResponse.json({ message: "Invalid signature" }, { status: 400 });
   }
 
-  revalidateTag("articles");
-  return NextResponse.json({ message: "success" });
+  try {
+    revalidateTag("articles");
+    return NextResponse.json({ message: "success" });
+  } catch (error) {
+    console.error("Revalidation error:", error);
+    return NextResponse.json(
+      { message: "Revalidation failed" },
+      { status: 500 }
+    );
+  }
 }
