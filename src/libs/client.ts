@@ -42,6 +42,9 @@ export const getArticles = async (limit: number) => {
     queries: {
       limit,
     },
+    customRequestInit: {
+      next: { tags: ["articles"] },
+    },
   });
   return articles;
 };
