@@ -7,6 +7,7 @@ export async function POST(request: Request): Promise<Response> {
   const bodyBuffer = Buffer.from(bodyText, "utf-8");
 
   const secret = process.env.MICROCMS_WEBHOOK_SIGNATURE_SECRET;
+  console.log(secret);
   if (!secret) {
     console.error("Secret is empty.");
     return NextResponse.json({ message: "Server error" }, { status: 500 });
