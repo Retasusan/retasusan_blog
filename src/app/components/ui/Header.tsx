@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center p-5 bg-white shadow-md">
+    <header className="flex justify-between items-center p-5 bg-white shadow-gray-400 drop-shadow-lg">
       <Link href="/">
         <h1 className="text-3xl font-semibold text-accentGreen">
           Retasusan&apos;s Blog
         </h1>
       </Link>
-      <nav className="flex gap-5">
+      <nav className="flex gap-5 text-xl">
         <div className="text-accentBlue hover:text-[#89d7ef] hover:underline">
           <Link href="/articles">記事</Link>
         </div>

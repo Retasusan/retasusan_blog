@@ -37,13 +37,23 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export const getArticles = async (limit: number) => {
-  const articles = await client.getList<Articles>({
-    endpoint: "articles",
-    queries: {
-      limit,
-    },
-  });
-  return articles;
+  if (limit <= 0) {
+    throw new Error("Limit must be greater than 0");
+  }
+
+  try {
+    const articles = await client.getList<Articles>({
+      endpoint: "articles",
+      queries: { limit },
+      customRequestInit: {
+        next: { tags: ["articles"] },
+      },
+    });
+    return articles;
+  } catch (error) {
+    console.error("Failed to fetch articles:", error);
+    throw new Error("Failed to fetch articles");
+  }
 };
 
 // ブログの詳細を取得
