@@ -40,20 +40,11 @@ export const getArticles = async (limit: number) => {
   if (limit <= 0) {
     throw new Error("Limit must be greater than 0");
   }
-
-  try {
-    const articles = await client.getList<Articles>({
-      endpoint: "articles",
-      queries: { limit },
-      customRequestInit: {
-        next: { tags: ["articles"] },
-      },
-    });
-    return articles;
-  } catch (error) {
-    console.error("Failed to fetch articles:", error);
-    throw new Error("Failed to fetch articles");
-  }
+  const articles = await client.getList<Articles>({
+    endpoint: "articles",
+    queries: { limit },
+  });
+  return articles;
 };
 
 // ブログの詳細を取得
