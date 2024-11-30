@@ -13,7 +13,7 @@ export default function page() {
 
       <section className="w-[70%] min-w-[600px] max-w-[1000px] mx-auto m-10">
         {/* プロフィールセクション */}
-        <section className="p-10 bg-gray-200 rounded-lg">
+        <section className="p-10 bg-cardGray rounded-lg shadow-lg">
           <Image
             src={icon}
             alt="icon"

@@ -24,7 +24,7 @@ export default async function page() {
           {contents?.map((article) => (
             <div
               key={article.id}
-              className="bg-accentGray p-5 m-7 rounded-lg shadow hover:shadow-lg transition"
+              className="bg-cardGray p-5 m-7 rounded-lg shadow-lg hover:shadow-lg transition"
             >
               <h3 className="text-xl font-semibold text-accentBlue">
                 {article.title}

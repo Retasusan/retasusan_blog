@@ -15,11 +15,24 @@ const config: Config = {
       colors: {
         base: "#ffffff", // 白
         accentGray: "#e7eaf0", // グレー
+        cardGray: "#f5f5f5", // カード用グレー
         accentBlue: "#538cfd", // 水色
         accentGreen: "#46dcb9", // 緑
       },
       gridTemplateColumns: {
         "auto-fit-300": "repeat(auto-fit, minmax(300px, 1fr))",
+      },
+      keyframes: {
+        "fade-in-bottom": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "fade-in-bottom": "fade-in-bottom 1.0s ease-out",
+      },
+      clipPath: {
+        wave: "polygon(0 60%, 100% 40%, 100% 100%, 0 100%)",
       },
     },
   },
