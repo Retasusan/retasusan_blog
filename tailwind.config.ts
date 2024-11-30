@@ -31,6 +31,9 @@ const config: Config = {
       animation: {
         "fade-in-bottom": "fade-in-bottom 1.0s ease-out",
       },
+      clipPath: {
+        wave: "polygon(0 60%, 100% 40%, 100% 100%, 0 100%)",
+      },
     },
   },
   plugins: [daisyui],
