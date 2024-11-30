@@ -100,12 +100,14 @@ export default async function page() {
                 className="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
               >
                 {/* 記事タイトル */}
-                <h3 className="text-lg font-semibold text-blue-600">
+                <h3 className="text-lg font-semibold text-blue-600 cursor-default">
                   {article.title}
                 </h3>
 
                 {/* 記事説明 */}
-                <p className="mt-2 text-gray-700">{article.description}</p>
+                <p className="mt-2 text-gray-700 cursor-default">
+                  {article.description}
+                </p>
 
                 {/* 続きを読むリンク */}
                 <Link
@@ -124,33 +126,33 @@ export default async function page() {
           <h2 className="text-2xl font-semibold text-gray-700 mb-5">
             最近のお知らせ
           </h2>
-          <table className="w-[101%] border-collapse min-w-[500px] ml-[-3px]">
-            <tbody>
-              {notifications.contents.map((content, i) => (
-                <tr
-                  key={i}
-                  className={`${
-                    i % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
-                  } hover:bg-gray-200 transition-colors`}
-                >
+          <div className="w-[101%] border-collapse min-w-[500px] ml-[-3px]">
+            {notifications.contents.map((content, i) => (
+              <ul
+                key={i}
+                className={`${
+                  i % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
+                } hover:bg-gray-200 transition-colors`}
+              >
+                <li>
                   <Link
                     href={`/notifications/${content.id}`}
                     className="flex items-center w-full px-4 py-3 text-gray-800 hover:underline"
                   >
-                    <td className="w-24 text-left border-none pl-2">
+                    <span className="w-24 text-left border-none pl-2">
                       {formattedDate(content.createdAt.slice(0, 10))}
-                    </td>
-                    <td className="w-44 font-medium border-none">
+                    </span>
+                    <span className="w-44 font-medium border-none">
                       {content.title}
-                    </td>
-                    <td className="flex-1 border-none">
+                    </span>
+                    <span className="flex-1 border-none">
                       {content.description}
-                    </td>
+                    </span>
                   </Link>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                </li>
+              </ul>
+            ))}
+          </div>
         </section>
       </section>
     </div>
