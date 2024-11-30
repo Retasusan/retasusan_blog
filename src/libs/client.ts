@@ -37,11 +37,12 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export const getArticles = async (limit: number) => {
+  if (limit <= 0) {
+    throw new Error("Limit must be greater than 0");
+  }
   const articles = await client.getList<Articles>({
     endpoint: "articles",
-    queries: {
-      limit,
-    },
+    queries: { limit },
   });
   return articles;
 };

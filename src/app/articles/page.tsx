@@ -9,11 +9,12 @@ export default async function page() {
   }
 
   return (
-    <div className="bg-base text-gray-800">
+    <div className="bg-base text-gray-800 min-h-screen">
       {/* ページタイトル */}
-      <section className="p-10 text-center bg-accentBlue">
-        <h2 className="text-3xl font-bold text-white">記事一覧</h2>
-        <p className="text-white mt-2">すべての記事を一覧でご覧いただけます</p>
+      <section className="p-10 text-gray-500 text-center">
+        <div className="w-[60%] min-w-[525px] mx-auto">
+          <h2 className="text-3xl font-bold">記事一覧</h2>
+        </div>
       </section>
 
       {/* 記事リスト */}
@@ -23,7 +24,7 @@ export default async function page() {
           {contents?.map((article) => (
             <div
               key={article.id}
-              className="bg-accentGray p-5 m-7 rounded-lg shadow hover:shadow-lg transition"
+              className="bg-cardGray p-5 m-7 rounded-lg shadow-lg hover:shadow-lg transition"
             >
               <h3 className="text-xl font-semibold text-accentBlue">
                 {article.title}
@@ -39,11 +40,6 @@ export default async function page() {
           ))}
         </div>
       </section>
-
-      {/* フッター */}
-      <footer className="p-5 bg-gray-200 text-center">
-        <p>&copy; 2024 My Blog. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
