@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center p-5 bg-white shadow-gray-400 drop-shadow-lg">
+    <header className="flex justify-between items-center p-5 bg-white shadow-gray-400 drop-shadow-lg min-w-[600px]">
       <Link href="/">
         <h1 className="text-3xl font-semibold text-accentGreen">
           Retasusan&apos;s Blog
