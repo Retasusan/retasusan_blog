@@ -11,18 +11,21 @@ import { Metadata } from "next";
 
 export async function generateStaticParams() {
   const { contents } = await getArticles(100);
+
   return contents.map((article) => ({
     articleId: article.id,
   }));
 }
 
-export const generateMetadata = async (props: {
-  params: Promise<{ articleId: string }>;
+export const generateMetadata = async ({
+  params,
+  searchParams,
+}: {
+  params: { articleId: string };
   searchParams?: { draftKey?: string };
 }): Promise<Metadata> => {
-  const params = await props.params;
-  const { draftKey } = props.searchParams || {};
-  const articleId = params.articleId;
+  const { articleId } = params;
+  const { draftKey } = searchParams || {};
 
   const article = await getArticleDetail(articleId, draftKey);
 
@@ -32,13 +35,15 @@ export const generateMetadata = async (props: {
   };
 };
 
-export default async function StaticDetailPage(props: {
-  params: Promise<{ articleId: string }>;
+export default async function StaticDetailPage({
+  params,
+  searchParams,
+}: {
+  params: { articleId: string };
   searchParams?: { draftKey?: string };
 }) {
-  const params = await props.params;
-  const { draftKey } = props.searchParams || {};
-  const articleId = params.articleId;
+  const { articleId } = params;
+  const { draftKey } = searchParams || {};
 
   const article = await getArticleDetail(articleId, draftKey);
   const createDate = article.createdAt.slice(0, 10).split("-").join("/");

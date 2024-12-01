@@ -33,12 +33,13 @@ export const generateMetadata = async (props: {
 };
 
 export default async function StaticDetailPage(props: {
-  params: Promise<{ notificationId: string }>;
+  params: { notificationId: string }; // Promise ではなく同期型のオブジェクトとして明示
+  searchParams?: { draftKey?: string }; // Optionalな検索パラメータ
 }) {
-  const params = await props.params;
-  const notificationId = params.notificationId;
-  const cookieStore = cookies();
-  const draftKey = (await cookieStore).get("draftKey")?.value; // Draft ModeのdraftKeyを取得
+  const { params, searchParams } = props;
+  const { notificationId } = params;
+  const draftKey = searchParams?.draftKey; // draftKeyを取得
+
   const notification = await getNotificationDetail(notificationId, draftKey);
   const createDate = notification.createdAt.slice(0, 10).split("-").join("/");
   const updateDate = notification.updatedAt.slice(0, 10).split("-").join("/");
