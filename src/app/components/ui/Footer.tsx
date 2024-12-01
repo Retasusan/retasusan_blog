@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white text-center p-4">
+    <footer className="bg-gray-800 text-white text-center p-4 cursor-default">
       &copy; 2024 Retasusan
       <br />
       Cover photo by &copy;{" "}

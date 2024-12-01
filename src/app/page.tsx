@@ -3,6 +3,8 @@ import icon from "@/public/icon/icon.jpeg";
 import Link from "next/link";
 import { getArticles, getNotifications } from "@/libs/client";
 import shrine from "@/public/shrine.jpeg";
+import clock from "@/public/icon/clock.svg";
+import arrow from "@/public/icon/arrow.svg";
 
 export default async function page() {
   const articles = await getArticles(6);
@@ -13,8 +15,9 @@ export default async function page() {
     return <h1>No Contents</h1>;
   }
 
-  const formattedDate: (date: string) => string = (date: string) => {
-    return date.split("-").join("/");
+  const formattedTime = (createdAt: string): string => {
+    const date = new Date(createdAt);
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   };
 
   return (
@@ -24,7 +27,7 @@ export default async function page() {
           key={i}
           className="flex items-center bg-gradient-to-r from-cyan-400 to-teal-300 px-6 py-4"
         >
-          <div className="bg-white text-cyan-500 font-bold text-sm px-4 py-1 rounded-full shadow-md">
+          <div className="bg-white text-cyan-500 font-bold text-sm px-4 py-1 rounded-full shadow-md cursor-default">
             NEWS
           </div>
           {/* ニュースの内容 */}
@@ -45,7 +48,7 @@ export default async function page() {
         />
         <div className="absolute inset-0 flex items-end justify-center">
           <div className="w-full min-w-[800px] h-[40%] bg-gradient-to-b from-transparent to-black flex items-center justify-center lg:min-w-0">
-            <p className="text-white mb-10 text-center text-4xl font-bold animate-fade-in-bottom lg:mb-0 lg:text-7xl sm:text-5xl">
+            <p className="text-white mb-10 text-center text-4xl font-bold animate-fade-in-bottom lg:mb-0 lg:text-7xl sm:text-5xl cursor-default">
               Welcome to Retasusan&apos;s Blog!
             </p>
           </div>
@@ -54,7 +57,7 @@ export default async function page() {
 
       {/* ヒーローセクション */}
       <section className="p-10 text-gray-500 text-center">
-        <div className="w-[60%] min-w-[525px] mx-auto">
+        <div className="w-[60%] min-w-[525px] mx-auto cursor-default">
           <h2 className="text-3xl font-bold">ようこそ！</h2>
           <p className="mt-2 text-xl">最新の記事やお知らせ一覧</p>
         </div>
@@ -66,7 +69,7 @@ export default async function page() {
           <section id="articles" className="p-10 bg-base">
             <div className="grid grid-cols-auto-fit-300 gap-6">
               {/* 自己紹介カード */}
-              <div className="bg-cardGray p-5 rounded-lg shadow-lg hover:shadow-xl transition">
+              <div className="bg-gray-100 p-5 rounded-lg shadow-lg hover:shadow-xl transition">
                 <div className="flex gap-6">
                   <Image
                     src={icon}
@@ -79,7 +82,6 @@ export default async function page() {
                     <h2 className="text-xl font-bold">筆者について</h2>
                     <div className="text-xl">Retasusan</div>
                     <p>ネットワークに興味がある大学生</p>
-                    <div>アイコン置き場</div>
                   </div>
                 </div>
               </div>
@@ -88,34 +90,104 @@ export default async function page() {
         </Link>
         {/* 記事セクション */}
         <section id="articles" className="p-10 bg-base">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-5">
+          <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4 cursor-default">
             最近の記事
           </h2>
-          <div className="grid grid-cols-auto-fit-300 gap-6">
+          <div className="grid grid-cols-auto-fit-350 gap-6">
             {/* 記事カード */}
             {/* カード間のマージンを設定 */}
             {articles.contents?.map((article, i) => (
               <div
                 key={i}
-                className="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+                className="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
               >
-                {/* 記事タイトル */}
-                <h3 className="text-lg font-semibold text-blue-600 cursor-default">
-                  {article.title}
-                </h3>
+                <div className="flex">
+                  {article.thumbnail?.url && (
+                    <div
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        flexShrink: 0,
+                        borderRadius: "7px",
+                        overflow: "hidden",
+                        marginLeft: "10px",
+                      }}
+                    >
+                      <Image
+                        src={article.thumbnail?.url}
+                        height={100}
+                        width={100}
+                        alt="thumbnail"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+                  )}
+                  <div className="ml-2 mt-[-3px]">
+                    {/* 記事タイトル */}
+                    <h3 className="ml-3 text-2xl font-semibold text-blue-600 cursor-default">
+                      {article.title}
+                    </h3>
 
-                {/* 記事説明 */}
-                <p className="mt-2 text-gray-700 cursor-default">
-                  {article.description}
-                </p>
+                    {/* 記事説明 */}
+                    <p className="ml-3 mt-1 text-gray-700 cursor-default whitespace-pre-wrap">
+                      {article.description}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  {/* タグ */}
+                  <div className="mt-5 flex space-x-2">
+                    {article.tags?.slice(0, 3).map((tag, index) => (
+                      <span
+                        key={index}
+                        className="bg-blue-100 text-blue-600 text-xs font-medium py-1 px-3 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                {/* 投稿日時 */}
+                <div className="flex items-center ml-2 mt-2 mb-[-7px]">
+                  {/* 公開日 */}
+                  <div className="flex-shrink-0">
+                    <Image
+                      src={clock}
+                      width={15}
+                      height={15}
+                      alt="clock icon"
+                    />
+                  </div>
+                  <span className="ml-1 text-gray-600 mt-[1px] text-sm">
+                    {formattedTime(article.createdAt)}
+                  </span>
+                  {/* 最終更新日 */}
+                  <div className="flex-shrink-0 ml-3">
+                    <Image
+                      src={arrow}
+                      width={15}
+                      height={15}
+                      alt="arrow icon"
+                    />
+                  </div>
+                  <span className="ml-1 text-gray-600 mt-[1px] text-sm">
+                    {formattedTime(article.updatedAt)}
+                  </span>
+                </div>
 
-                {/* 続きを読むリンク */}
-                <Link
-                  href={`/articles/${article.id}`}
-                  className="inline-block mt-4 text-white bg-[#40aad4] px-4 py-2 rounded-lg hover:bg-[#2db8ef] focus:ring-4 focus:ring-blue-200 transition-all"
-                >
-                  続きを読む
-                </Link>
+                {/* ボタン */}
+                <div className="w-full flex justify-center">
+                  <Link
+                    href={`/articles/${article.id}`}
+                    className="w-full text-center mt-4 bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-blue-600 transition-colors"
+                  >
+                    続きを読む
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -123,34 +195,29 @@ export default async function page() {
 
         {/* お知らせセクション */}
         <section id="articles" className="bg-base p-[40px]">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-5">
+          <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4 cursor-default">
             最近のお知らせ
           </h2>
-          <div className="w-[101%] border-collapse min-w-[500px] ml-[-3px]">
+          <div className="w-[101%] border-collapse min-w-[500px] ml-[-3px] p-3 shadow-xl rounded-lg bg-gray-100">
             {notifications.contents.map((content, i) => (
-              <ul
+              <div
                 key={i}
                 className={`${
-                  i % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
-                } hover:bg-gray-200 transition-colors`}
+                  i % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                } transition-colors relative`}
               >
-                <li>
-                  <Link
-                    href={`/notifications/${content.id}`}
-                    className="flex items-center w-full px-4 py-3 text-gray-800 hover:underline"
-                  >
-                    <span className="w-24 text-left border-none pl-2">
-                      {formattedDate(content.createdAt.slice(0, 10))}
-                    </span>
-                    <span className="w-44 font-medium border-none">
-                      {content.title}
-                    </span>
-                    <span className="flex-1 border-none">
-                      {content.description}
-                    </span>
-                  </Link>
-                </li>
-              </ul>
+                <span className="p-4 text-gray-500 text-lg">
+                  {formattedTime(content.createdAt.slice(0, 10))}
+                </span>
+                <Link
+                  href={`/notifications/${content.id}`}
+                  className="hover:underline absolute top-[-1px] left-28 "
+                >
+                  <span className="p-4 text-gray-500 text-lg">
+                    {content.title}
+                  </span>
+                </Link>
+              </div>
             ))}
           </div>
         </section>

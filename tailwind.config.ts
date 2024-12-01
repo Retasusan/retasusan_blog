@@ -20,7 +20,7 @@ const config: Config = {
         accentGreen: "#46dcb9", // 緑
       },
       gridTemplateColumns: {
-        "auto-fit-300": "repeat(auto-fit, minmax(300px, 1fr))",
+        "auto-fit-350": "repeat(auto-fit, minmax(350px, 1fr))",
       },
       keyframes: {
         "fade-in-bottom": {
