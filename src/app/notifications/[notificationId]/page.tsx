@@ -1,7 +1,7 @@
 import { getNotificationDetail, getNotifications } from "@/libs/client";
 import "@/app/style/tagElement.css";
 import SyntaxHilighter from "@/app/components/SyntaxHilighter/SyntaxHilighter";
-import tag from "@/public/icon/tag.svg";
+// import tag from "@/public/icon/tag.svg";
 import home from "@/public/icon/home.svg";
 import Image from "next/image";
 import Link from "next/link";
