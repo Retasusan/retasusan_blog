@@ -66,7 +66,7 @@ export default async function page() {
           <section id="articles" className="p-10 bg-base">
             <div className="grid grid-cols-auto-fit-300 gap-6">
               {/* 自己紹介カード */}
-              <div className="bg-cardGray p-5 rounded-lg shadow-lg hover:shadow-xl transition">
+              <div className="bg-gray-100 p-5 rounded-lg shadow-lg hover:shadow-xl transition">
                 <div className="flex gap-6">
                   <Image
                     src={icon}
@@ -88,7 +88,7 @@ export default async function page() {
         </Link>
         {/* 記事セクション */}
         <section id="articles" className="p-10 bg-base">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-5">
+          <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4">
             最近の記事
           </h2>
           <div className="grid grid-cols-auto-fit-300 gap-6">
@@ -97,25 +97,59 @@ export default async function page() {
             {articles.contents?.map((article, i) => (
               <div
                 key={i}
-                className="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+                className="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
               >
-                {/* 記事タイトル */}
-                <h3 className="text-lg font-semibold text-blue-600 cursor-default">
-                  {article.title}
-                </h3>
+                <div className="flex">
+                  {article.thumbnail?.url && (
+                    <Image
+                      src={article.thumbnail?.url}
+                      height={100}
+                      width={100}
+                      alt={"thumbnail"}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "7px",
+                        marginLeft: "10px",
+                      }}
+                    />
+                  )}
+                  <div className="ml-5">
+                    {/* 記事タイトル */}
+                    <h3 className="ml-3 text-xl font-semibold text-blue-600 cursor-default">
+                      {article.title}
+                    </h3>
 
-                {/* 記事説明 */}
-                <p className="mt-2 text-gray-700 cursor-default">
-                  {article.description}
-                </p>
+                    {/* 記事説明 */}
+                    <p className="ml-3 mt-2 text-gray-700 cursor-default">
+                      {article.description}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  {/* タグ */}
+                  <div className="mt-5 flex space-x-2">
+                    {article.tags?.slice(0, 3).map((tag, index) => (
+                      <span
+                        key={index}
+                        className="bg-blue-100 text-blue-600 text-xs font-medium py-1 px-3 rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-                {/* 続きを読むリンク */}
-                <Link
-                  href={`/articles/${article.id}`}
-                  className="inline-block mt-4 text-white bg-[#40aad4] px-4 py-2 rounded-lg hover:bg-[#2db8ef] focus:ring-4 focus:ring-blue-200 transition-all"
-                >
-                  続きを読む
-                </Link>
+                {/* ボタン */}
+                <div className="w-full flex justify-center">
+                  <Link
+                    href={`/articles/${article.id}`}
+                    className="w-full text-center mt-4 bg-blue-500 text-white text-sm font-medium py-2 px-4 rounded-full hover:bg-blue-600 transition-colors"
+                  >
+                    続きを読む
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -123,30 +157,24 @@ export default async function page() {
 
         {/* お知らせセクション */}
         <section id="articles" className="bg-base p-[40px]">
-          <h2 className="text-2xl font-semibold text-gray-700 mb-5">
+          <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4">
             最近のお知らせ
           </h2>
-          <div className="w-[101%] border-collapse min-w-[500px] ml-[-3px]">
+          <div className="w-[101%] border-collapse min-w-[500px] ml-[-3px] p-3 shadow-xl rounded-lg bg-gray-100">
             {notifications.contents.map((content, i) => (
               <ul
                 key={i}
                 className={`${
-                  i % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
-                } hover:bg-gray-200 transition-colors`}
+                  i % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                } hover:underline transition-colors`}
               >
                 <li>
-                  <Link
-                    href={`/notifications/${content.id}`}
-                    className="flex items-center w-full px-4 py-3 text-gray-800 hover:underline"
-                  >
-                    <span className="w-24 text-left border-none pl-2">
+                  <Link href={`/notifications/${content.id}`}>
+                    <span className="p-4 text-gray-500 text-lg">
                       {formattedDate(content.createdAt.slice(0, 10))}
                     </span>
-                    <span className="w-44 font-medium border-none">
+                    <span className="p-4 text-gray-500 text-lg">
                       {content.title}
-                    </span>
-                    <span className="flex-1 border-none">
-                      {content.description}
                     </span>
                   </Link>
                 </li>
