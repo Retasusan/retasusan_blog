@@ -82,7 +82,6 @@ export default async function page() {
                     <h2 className="text-xl font-bold">筆者について</h2>
                     <div className="text-xl">Retasusan</div>
                     <p>ネットワークに興味がある大学生</p>
-                    <div>アイコン置き場</div>
                   </div>
                 </div>
               </div>

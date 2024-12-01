@@ -8,19 +8,19 @@
   }
 
   h2 {
-    @apply text-4xl;
+    @apply text-5xl mb-3;
   }
 
   h3 {
-    @apply text-3xl;
+    @apply text-4xl mb-3;
   }
 
   h4 {
-    @apply text-2xl;
+    @apply text-3xl;
   }
 
   h5 {
-    @apply text-xl;
+    @apply text-2xl;
   }
 
   p {
