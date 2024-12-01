@@ -27,7 +27,7 @@ export default async function page() {
           key={i}
           className="flex items-center bg-gradient-to-r from-cyan-400 to-teal-300 px-6 py-4"
         >
-          <div className="bg-white text-cyan-500 font-bold text-sm px-4 py-1 rounded-full shadow-md">
+          <div className="bg-white text-cyan-500 font-bold text-sm px-4 py-1 rounded-full shadow-md cursor-default">
             NEWS
           </div>
           {/* ニュースの内容 */}
@@ -48,7 +48,7 @@ export default async function page() {
         />
         <div className="absolute inset-0 flex items-end justify-center">
           <div className="w-full min-w-[800px] h-[40%] bg-gradient-to-b from-transparent to-black flex items-center justify-center lg:min-w-0">
-            <p className="text-white mb-10 text-center text-4xl font-bold animate-fade-in-bottom lg:mb-0 lg:text-7xl sm:text-5xl">
+            <p className="text-white mb-10 text-center text-4xl font-bold animate-fade-in-bottom lg:mb-0 lg:text-7xl sm:text-5xl cursor-default">
               Welcome to Retasusan&apos;s Blog!
             </p>
           </div>
@@ -57,7 +57,7 @@ export default async function page() {
 
       {/* ヒーローセクション */}
       <section className="p-10 text-gray-500 text-center">
-        <div className="w-[60%] min-w-[525px] mx-auto">
+        <div className="w-[60%] min-w-[525px] mx-auto cursor-default">
           <h2 className="text-3xl font-bold">ようこそ！</h2>
           <p className="mt-2 text-xl">最新の記事やお知らせ一覧</p>
         </div>
@@ -90,7 +90,7 @@ export default async function page() {
         </Link>
         {/* 記事セクション */}
         <section id="articles" className="p-10 bg-base">
-          <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4">
+          <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4 cursor-default">
             最近の記事
           </h2>
           <div className="grid grid-cols-auto-fit-350 gap-6">
@@ -195,7 +195,7 @@ export default async function page() {
 
         {/* お知らせセクション */}
         <section id="articles" className="bg-base p-[40px]">
-          <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4">
+          <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4 cursor-default">
             最近のお知らせ
           </h2>
           <div className="w-[101%] border-collapse min-w-[500px] ml-[-3px] p-3 shadow-xl rounded-lg bg-gray-100">
