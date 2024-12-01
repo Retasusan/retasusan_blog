@@ -3,6 +3,8 @@ import icon from "@/public/icon/icon.jpeg";
 import Link from "next/link";
 import { getArticles, getNotifications } from "@/libs/client";
 import shrine from "@/public/shrine.jpeg";
+import clock from "@/public/icon/clock.svg";
+import arrow from "@/public/icon/arrow.svg";
 
 export default async function page() {
   const articles = await getArticles(6);
@@ -13,8 +15,9 @@ export default async function page() {
     return <h1>No Contents</h1>;
   }
 
-  const formattedDate: (date: string) => string = (date: string) => {
-    return date.split("-").join("/");
+  const formattedTime = (createdAt: string): string => {
+    const date = new Date(createdAt);
+    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
   };
 
   return (
@@ -115,16 +118,43 @@ export default async function page() {
                       }}
                     />
                   )}
-                  <div className="ml-5">
+                  <div className="ml-2 mt-[-3px]">
                     {/* 記事タイトル */}
-                    <h3 className="ml-3 text-xl font-semibold text-blue-600 cursor-default">
+                    <h3 className="ml-3 text-2xl font-semibold text-blue-600 cursor-default">
                       {article.title}
                     </h3>
 
                     {/* 記事説明 */}
-                    <p className="ml-3 mt-2 text-gray-700 cursor-default">
+                    <p className="ml-3 mt-[-3px] text-gray-700 cursor-default">
                       {article.description}
                     </p>
+                    {/* 投稿日時 */}
+                    <div className="flex items-center ml-2 mt-8">
+                      {/* 公開日 */}
+                      <div className="flex-shrink-0">
+                        <Image
+                          src={clock}
+                          width={15}
+                          height={15}
+                          alt="clock icon"
+                        />
+                      </div>
+                      <span className="ml-1 text-gray-600 mt-[1px] text-sm">
+                        {formattedTime(article.createdAt)}
+                      </span>
+                      {/* 最終更新日 */}
+                      <div className="flex-shrink-0 ml-3">
+                        <Image
+                          src={arrow}
+                          width={15}
+                          height={15}
+                          alt="arrow icon"
+                        />
+                      </div>
+                      <span className="ml-1 text-gray-600 mt-[1px] text-sm">
+                        {formattedTime(article.updatedAt)}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -162,23 +192,24 @@ export default async function page() {
           </h2>
           <div className="w-[101%] border-collapse min-w-[500px] ml-[-3px] p-3 shadow-xl rounded-lg bg-gray-100">
             {notifications.contents.map((content, i) => (
-              <ul
+              <div
                 key={i}
                 className={`${
                   i % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                } hover:underline transition-colors`}
+                } transition-colors`}
               >
-                <li>
-                  <Link href={`/notifications/${content.id}`}>
-                    <span className="p-4 text-gray-500 text-lg">
-                      {formattedDate(content.createdAt.slice(0, 10))}
-                    </span>
-                    <span className="p-4 text-gray-500 text-lg">
-                      {content.title}
-                    </span>
-                  </Link>
-                </li>
-              </ul>
+                <span className="p-4 text-gray-500 text-lg">
+                  {formattedTime(content.createdAt.slice(0, 10))}
+                </span>
+                <Link
+                  href={`/notifications/${content.id}`}
+                  className="hover:underline"
+                >
+                  <span className="p-4 text-gray-500 text-lg">
+                    {content.title}
+                  </span>
+                </Link>
+              </div>
             ))}
           </div>
         </section>

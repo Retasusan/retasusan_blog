@@ -6,10 +6,22 @@ import github from "@/public/icon/github.svg";
 import qiita from "@/public/icon/qiita-icon.png";
 import zenn from "@/public/icon/logo-only.svg";
 import Link from "next/link";
+import home from "@/public/icon/home.svg";
 
 export default function page() {
   return (
     <div className="bg-base text-gray-800 min-h-screen">
+      <div className="flex items-center bg-[#f4f3f3] h-10">
+        <Link href="/" className="flex flex-row items-center mx-3">
+          <Image src={home} alt="home icon" width={20} height={20} />
+          Home
+        </Link>
+        &gt;
+        <Link href="/articles" className="flex mx-3">
+          筆者について
+        </Link>
+      </div>
+
       {/* ページタイトル */}
       <section className="p-10 text-gray-500 text-center">
         <div className="w-[60%] min-w-[525px] mx-auto">
