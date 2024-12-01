@@ -71,16 +71,21 @@ export const getArticles = async (limit: number) => {
   return articles;
 };
 
-// ブログの詳細を取得
-export const getArticleDetail = async (contentId: string) => {
+// ブログの詳細を取得（Draft Mode対応）
+export const getArticleDetail = async (
+  contentId: string,
+  draftKey?: string
+) => {
+  const queries = draftKey ? { draftKey } : undefined;
   const article = await client.getListDetail<Article>({
     endpoint: "articles",
     contentId,
+    queries,
   });
   return article;
 };
 
-// ブログ一覧を取得
+// 通知一覧を取得
 export const getNotifications = async (limit: number) => {
   const notifications = await client.getList<Notifications>({
     endpoint: "notifications",
@@ -91,11 +96,16 @@ export const getNotifications = async (limit: number) => {
   return notifications;
 };
 
-// ブログの詳細を取得
-export const getNotificationDetail = async (contentId: string) => {
+// 通知の詳細を取得（Draft Mode対応）
+export const getNotificationDetail = async (
+  contentId: string,
+  draftKey?: string
+) => {
+  const queries = draftKey ? { draftKey } : undefined;
   const notification = await client.getListDetail<Notification>({
     endpoint: "notifications",
     contentId,
+    queries,
   });
   return notification;
 };

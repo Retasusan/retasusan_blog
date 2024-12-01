@@ -18,10 +18,13 @@ export async function generateStaticParams() {
 
 export const generateMetadata = async (props: {
   params: Promise<{ articleId: string }>;
+  searchParams?: { draftKey?: string };
 }): Promise<Metadata> => {
   const params = await props.params;
+  const { draftKey } = props.searchParams || {};
   const articleId = params.articleId;
-  const article = await getArticleDetail(articleId);
+
+  const article = await getArticleDetail(articleId, draftKey);
 
   return {
     title: article.title,
@@ -31,10 +34,13 @@ export const generateMetadata = async (props: {
 
 export default async function StaticDetailPage(props: {
   params: Promise<{ articleId: string }>;
+  searchParams?: { draftKey?: string };
 }) {
   const params = await props.params;
+  const { draftKey } = props.searchParams || {};
   const articleId = params.articleId;
-  const article = await getArticleDetail(articleId);
+
+  const article = await getArticleDetail(articleId, draftKey);
   const createDate = article.createdAt.slice(0, 10).split("-").join("/");
   const updateDate = article.updatedAt.slice(0, 10).split("-").join("/");
 
@@ -79,7 +85,7 @@ export default async function StaticDetailPage(props: {
             </div>
             <div className="flex">
               <Image src={arrow} alt="arrow icon" width={20} height={20} />
-              {`作成日:${updateDate}`}
+              {`更新日:${updateDate}`}
             </div>
           </div>
         </div>
