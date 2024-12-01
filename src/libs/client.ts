@@ -26,12 +26,24 @@ export type Article = {
 export type Notifications = {
   title: string;
   description: string;
+  tags: string[];
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
 };
 
 export type Notification = {
   title: string;
   content: string;
   description: string;
+  tags: string[];
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
 };
 
 if (!process.env.SERVICE_DOMAIN) {
