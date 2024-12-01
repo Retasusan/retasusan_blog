@@ -4,6 +4,12 @@ import Image from "next/image";
 import home from "@/public/icon/home.svg";
 import clock from "@/public/icon/clock.svg";
 import arrow from "@/public/icon/arrow.svg";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "お知らせ一覧ページ",
+  description: "Retasusan's Blogのお知らせ一覧ページ",
+};
 
 export default async function page() {
   const { contents } = await getNotifications(100);

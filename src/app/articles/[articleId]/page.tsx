@@ -7,6 +7,8 @@ import clock from "@/public/icon/clock.svg";
 import arrow from "@/public/icon/arrow.svg";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
   const { contents } = await getArticles(100);
@@ -14,6 +16,19 @@ export async function generateStaticParams() {
     articleId: article.id,
   }));
 }
+
+export const generateMetadata = async (props: {
+  params: Promise<{ articleId: string }>;
+}): Promise<Metadata> => {
+  const params = await props.params;
+  const articleId = params.articleId;
+  const article = await getArticleDetail(articleId);
+
+  return {
+    title: article.title,
+    description: article.description,
+  };
+};
 
 export default async function StaticDetailPage(props: {
   params: Promise<{ articleId: string }>;
@@ -26,6 +41,14 @@ export default async function StaticDetailPage(props: {
 
   return (
     <div>
+      <Head>
+        <title>{article.title}</title>
+        <meta name="description">{article.description}</meta>
+        <meta property="og:title">{article.title}</meta>
+        <meta property="og:image">{article.thumbnail.url}</meta>
+        <meta name="twitter:card" content={article.description}></meta>
+        <meta name="twitter:image" content={article.thumbnail.url}></meta>
+      </Head>
       <div className="flex items-center bg-[#f4f3f3] h-10">
         <Link href="/" className="flex flex-row items-center mx-3">
           <Image src={home} alt="home icon" width={20} height={20} />

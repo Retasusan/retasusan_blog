@@ -7,6 +7,12 @@ import qiita from "@/public/icon/qiita-icon.png";
 import zenn from "@/public/icon/logo-only.svg";
 import Link from "next/link";
 import home from "@/public/icon/home.svg";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "筆者について",
+  description: "Retasusan's Blog筆者であるRetasusanについてのページ",
+};
 
 export default function page() {
   return (
