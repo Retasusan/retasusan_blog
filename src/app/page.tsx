@@ -205,14 +205,14 @@ export default async function page() {
                 key={i}
                 className={`${
                   i % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                } transition-colors`}
+                } transition-colors relative`}
               >
                 <span className="p-4 text-gray-500 text-lg">
                   {formattedTime(content.createdAt.slice(0, 10))}
                 </span>
                 <Link
                   href={`/notifications/${content.id}`}
-                  className="hover:underline"
+                  className="hover:underline absolute top-[-1px] left-28 "
                 >
                   <span className="p-4 text-gray-500 text-lg">
                     {content.title}
