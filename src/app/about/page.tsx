@@ -7,6 +7,12 @@ import qiita from "@/public/icon/qiita-icon.png";
 import zenn from "@/public/icon/logo-only.svg";
 import Link from "next/link";
 import home from "@/public/icon/home.svg";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "筆者について",
+  description: "Retasusan's Blog筆者であるRetasusanについてのページ",
+};
 
 export default function page() {
   return (
@@ -25,7 +31,7 @@ export default function page() {
       {/* ページタイトル */}
       <section className="p-10 text-gray-500 text-center">
         <div className="w-[60%] min-w-[525px] mx-auto">
-          <h2 className="text-3xl font-bold">筆者について</h2>
+          <h2 className="text-3xl font-bold cursor-default">筆者について</h2>
           <Image
             src={icon}
             alt="icon"
@@ -38,7 +44,7 @@ export default function page() {
 
       <section className="w-[70%] min-w-[600px] max-w-[1000px] mx-auto m-10">
         {/* プロフィールセクション */}
-        <section className="p-10 bg-cardGray rounded-lg shadow-lg">
+        <section className="p-10 bg-cardGray rounded-lg shadow-lg cursor-default">
           <div className="mt-3 text-gray-600 mx-auto">
             <div>
               <div className="m-5">

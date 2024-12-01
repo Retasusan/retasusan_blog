@@ -7,6 +7,7 @@ import clock from "@/public/icon/clock.svg";
 import arrow from "@/public/icon/arrow.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
   const { contents } = await getArticles(100);
@@ -14,6 +15,19 @@ export async function generateStaticParams() {
     articleId: article.id,
   }));
 }
+
+export const generateMetadata = async (props: {
+  params: Promise<{ articleId: string }>;
+}): Promise<Metadata> => {
+  const params = await props.params;
+  const articleId = params.articleId;
+  const article = await getArticleDetail(articleId);
+
+  return {
+    title: article.title,
+    description: article.description,
+  };
+};
 
 export default async function StaticDetailPage(props: {
   params: Promise<{ articleId: string }>;

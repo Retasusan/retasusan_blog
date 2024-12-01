@@ -5,6 +5,7 @@ import SyntaxHilighter from "@/app/components/SyntaxHilighter/SyntaxHilighter";
 import home from "@/public/icon/home.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
   const { contents } = await getNotifications(100);
@@ -12,6 +13,19 @@ export async function generateStaticParams() {
     notificationId: notification.id,
   }));
 }
+
+export const generateMetadata = async (props: {
+  params: Promise<{ notificationId: string }>;
+}): Promise<Metadata> => {
+  const params = await props.params;
+  const notificationId = params.notificationId;
+  const notification = await getNotificationDetail(notificationId);
+
+  return {
+    title: notification.title,
+    description: notification.description,
+  };
+};
 
 export default async function StaticDetailPage(props: {
   params: Promise<{ notificationId: string }>;

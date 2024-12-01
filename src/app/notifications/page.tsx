@@ -4,6 +4,12 @@ import Image from "next/image";
 import home from "@/public/icon/home.svg";
 import clock from "@/public/icon/clock.svg";
 import arrow from "@/public/icon/arrow.svg";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "お知らせ一覧ページ",
+  description: "Retasusan's Blogのお知らせ一覧ページ",
+};
 
 export default async function page() {
   const { contents } = await getNotifications(100);
@@ -32,7 +38,7 @@ export default async function page() {
       {/* ページタイトル */}
       <section className="px-20 py-10 text-gray-500 text-center">
         <div className="w-[60%] min-w-[525px] mx-auto">
-          <h2 className="text-3xl font-bold">お知らせ一覧</h2>
+          <h2 className="text-3xl font-bold cursor-default">お知らせ一覧</h2>
         </div>
       </section>
 
