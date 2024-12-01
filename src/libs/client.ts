@@ -3,12 +3,24 @@ import { createClient } from "microcms-js-sdk";
 export type Articles = {
   title: string;
   description: string;
+  tags: string[];
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
 };
 
 export type Article = {
   title: string;
   content: string;
   description: string;
+  tags: string[];
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
 };
 
 export type Notifications = {
