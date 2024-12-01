@@ -94,7 +94,7 @@ export default async function page() {
           <h2 className="text-3xl font-bold text-gray-700 border-b pb-2 mb-4">
             最近の記事
           </h2>
-          <div className="grid grid-cols-auto-fit-300 gap-6">
+          <div className="grid grid-cols-auto-fit-350 gap-6">
             {/* 記事カード */}
             {/* カード間のマージンを設定 */}
             {articles.contents?.map((article, i) => (
@@ -104,19 +104,28 @@ export default async function page() {
               >
                 <div className="flex">
                   {article.thumbnail?.url && (
-                    <Image
-                      src={article.thumbnail?.url}
-                      height={100}
-                      width={100}
-                      alt={"thumbnail"}
+                    <div
                       style={{
                         width: "100px",
                         height: "100px",
-                        objectFit: "cover",
+                        flexShrink: 0,
                         borderRadius: "7px",
+                        overflow: "hidden",
                         marginLeft: "10px",
                       }}
-                    />
+                    >
+                      <Image
+                        src={article.thumbnail?.url}
+                        height={100}
+                        width={100}
+                        alt="thumbnail"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
                   )}
                   <div className="ml-2 mt-[-3px]">
                     {/* 記事タイトル */}
@@ -125,36 +134,9 @@ export default async function page() {
                     </h3>
 
                     {/* 記事説明 */}
-                    <p className="ml-3 mt-[-3px] text-gray-700 cursor-default">
+                    <p className="ml-3 mt-1 text-gray-700 cursor-default whitespace-pre-wrap">
                       {article.description}
                     </p>
-                    {/* 投稿日時 */}
-                    <div className="flex items-center ml-2 mt-8">
-                      {/* 公開日 */}
-                      <div className="flex-shrink-0">
-                        <Image
-                          src={clock}
-                          width={15}
-                          height={15}
-                          alt="clock icon"
-                        />
-                      </div>
-                      <span className="ml-1 text-gray-600 mt-[1px] text-sm">
-                        {formattedTime(article.createdAt)}
-                      </span>
-                      {/* 最終更新日 */}
-                      <div className="flex-shrink-0 ml-3">
-                        <Image
-                          src={arrow}
-                          width={15}
-                          height={15}
-                          alt="arrow icon"
-                        />
-                      </div>
-                      <span className="ml-1 text-gray-600 mt-[1px] text-sm">
-                        {formattedTime(article.updatedAt)}
-                      </span>
-                    </div>
                   </div>
                 </div>
                 <div>
@@ -169,6 +151,33 @@ export default async function page() {
                       </span>
                     ))}
                   </div>
+                </div>
+                {/* 投稿日時 */}
+                <div className="flex items-center ml-2 mt-2 mb-[-7px]">
+                  {/* 公開日 */}
+                  <div className="flex-shrink-0">
+                    <Image
+                      src={clock}
+                      width={15}
+                      height={15}
+                      alt="clock icon"
+                    />
+                  </div>
+                  <span className="ml-1 text-gray-600 mt-[1px] text-sm">
+                    {formattedTime(article.createdAt)}
+                  </span>
+                  {/* 最終更新日 */}
+                  <div className="flex-shrink-0 ml-3">
+                    <Image
+                      src={arrow}
+                      width={15}
+                      height={15}
+                      alt="arrow icon"
+                    />
+                  </div>
+                  <span className="ml-1 text-gray-600 mt-[1px] text-sm">
+                    {formattedTime(article.updatedAt)}
+                  </span>
                 </div>
 
                 {/* ボタン */}
