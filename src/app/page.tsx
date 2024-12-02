@@ -78,9 +78,9 @@ export default async function page() {
                     height={70}
                     className="rounded-full my-3"
                   />
-                  <div className="text-gray-600">
+                  <div className="text-gray-600 mt-2">
                     <h2 className="text-xl font-bold">筆者について</h2>
-                    <div className="text-xl">Retasusan</div>
+                    <div className="text-xl mt-[-4px]">Retasusan</div>
                     <p>ネットワークに興味がある大学生</p>
                   </div>
                 </div>
