@@ -6,6 +6,15 @@ import home from "@/public/icon/home.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
+import twitter from "@/public/icon/twitter.svg";
+import atcoder from "@/public/icon/atcoder.svg";
+import github from "@/public/icon/github.svg";
+import qiita from "@/public/icon/qiita-icon.png";
+import zenn from "@/public/icon/logo-only.svg";
+import icon from "@/public/icon/icon.jpeg";
+import tag from "@/public/icon/tag.svg";
+import clock from "@/public/icon/clock.svg";
+import arrow from "@/public/icon/arrow.svg";
 
 export async function generateStaticParams() {
   const { contents } = await getNotifications(100);
@@ -37,7 +46,7 @@ export default async function StaticDetailPage(props: {
   const updateDate = notification.updatedAt.slice(0, 10);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="flex items-center bg-[#f4f3f3] h-10">
         <Link href="/" className="flex flex-row items-center mx-3">
           <Image src={home} alt="home icon" width={20} height={20} />
@@ -45,7 +54,7 @@ export default async function StaticDetailPage(props: {
         </Link>
         &gt;
         <Link href="/articles" className="flex mx-3">
-          お知らせ一覧
+          記事一覧
         </Link>
         &gt;
         <Link href={`/articles/${notification.id}`} className="flex mx-3">
@@ -53,12 +62,9 @@ export default async function StaticDetailPage(props: {
         </Link>
       </div>
       <div className="m-16 border-2 border-solid border-slate-400 rounded-lg p-5 w-[90%] max-w-[1100px] mx-auto shadow-xl">
-        <div className="mb-10">
-          <h1 className="mb-5">{notification.title}</h1>
-
-          {/* お知らせ機能にタグを実装したい時用 */}
-
-          {/* <div className="flex items-start">
+        <div className="mb-10 pb-3 border-b-2 border-gray-300 border-solid">
+          <h1 className="text-5xl mb-5">{notification.title}</h1>
+          <div className="flex items-start">
             <div className="flex-shrink-0 mt-[3px] ml-1">
               <Image src={tag} alt="tag icon" width={20} height={20} />
             </div>
@@ -72,12 +78,103 @@ export default async function StaticDetailPage(props: {
                 </span>
               ))}
             </div>
-          </div> */}
-
-          <p>{`created Date:${createDate}`}</p>
-          <p>{`updatedDate:${updateDate}`}</p>
+          </div>
+          <div className="ml-1 mt-2">
+            <div className="flex">
+              <Image src={clock} alt="calendar icon" width={20} height={20} />
+              {`作成日:${createDate}`}
+            </div>
+            <div className="flex">
+              <Image src={arrow} alt="arrow icon" width={20} height={20} />
+              {`更新日:${updateDate}`}
+            </div>
+          </div>
         </div>
         <SyntaxHilighter content={notification.content} />
+        <div className="border-b-[1px] border-solid border-gray-500 my-10" />
+        <div className="m-3">
+          <div className="flex justify-start mx-auto mb-8">
+            <div>
+              <Image src={icon} alt="icon" width={100} height={100} />
+            </div>
+            <div className="ml-5">
+              <p className="font-bold text-3xl mt-1">Retasusan</p>
+              <p className="mt-2 text-xl">しがない大学生エンジニア</p>
+              <p className="text-xl">普段はRubyを書いているとされている。</p>
+            </div>
+          </div>
+          <div className="w-[25%]">
+            <p className="text-2xl mb-2">Contact</p>
+            <div className="mt-2 ml-0 flex justify-between">
+              <a
+                href="https://x.com/retasusan_510"
+                className="text-blue-500 focus-underline visited:text-fuchsia-800 hover:text-blue-700"
+              >
+                <Image
+                  src={twitter}
+                  alt="X"
+                  width={30}
+                  height={30}
+                  className="inline mr-2"
+                />
+              </a>
+              {/* GibHubアカウント */}
+              <a
+                href="https://github.com/"
+                className="text-blue-500 focus-underline visited:text-fuchsia-800 hover:text-blue-700"
+              >
+                <Image
+                  src={github}
+                  alt="GitHub"
+                  width={30}
+                  height={30}
+                  className="inline mr-2"
+                />
+              </a>
+              {/* AtCoderアカウント */}
+              <a
+                href="https://atcoder.jp/users/fubukisan"
+                className="text-blue-500 focus-underline visited:text-fuchsia-800 hover:text-blue-700"
+              >
+                <Image
+                  src={atcoder}
+                  alt="AtCoder"
+                  width={30}
+                  height={30}
+                  className="inline mr-2"
+                />
+              </a>
+
+              {/* qiita */}
+              <a
+                href="https://qiita.com/Retasusan"
+                className="text-blue-500 focus-underline visited:text-fuchsia-800 hover:text-blue-700"
+              >
+                <Image
+                  src={qiita}
+                  alt="X"
+                  width={30}
+                  height={30}
+                  className="inline mr-2"
+                />
+              </a>
+
+              {/* zenn */}
+              <a
+                href="https://zenn.dev/retasusan"
+                className="text-blue-500 focus-underline visited:text-fuchsia-800 hover:text-blue-700"
+              >
+                <Image
+                  src={zenn}
+                  alt="X"
+                  width={30}
+                  height={30}
+                  className="inline mr-2"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

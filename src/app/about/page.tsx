@@ -54,7 +54,9 @@ export default function page() {
                 <div>名前：Retasusan</div>
                 <div>所属：とある大学の情報系学部</div>
                 <div>好きなもの：甘いもの、期間限定の飲み物</div>
-                <div>一言：はやくつよつよエンジニアになりたい...</div>
+                <div>
+                  一言：ネットワークエンジニア志望だけど、普段はRubyを書いています。
+                </div>
               </div>
 
               <div className="m-5">
@@ -68,6 +70,7 @@ export default function page() {
                 <div>2024年6月：ハッカソン初参加</div>
                 <div>2024年7月：JANOG初参加、ICPC初参加</div>
                 <div>2024年10月：長期インターン採用</div>
+                <div>2025年4月：RubyKaigi初参加</div>
               </div>
 
               <div className="m-5">
@@ -115,9 +118,9 @@ export default function page() {
                 <h4 className="text-3xl pb-2 border-solid border-gray-400 border-b-2">
                   各種アカウント
                 </h4>
-                <div className="mt-4 ml-0 flex justify-between">
+                <div className="mt-4 ml-0 flex justify-between w-[30%]">
                   <a
-                    href="https://x.com/Yamada_medjed"
+                    href="https://x.com/retasusan_510"
                     className="text-blue-500 focus-underline visited:text-fuchsia-800 hover:text-blue-700"
                   >
                     <Image
