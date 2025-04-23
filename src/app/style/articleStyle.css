@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .article-content h1 {
+    @apply text-6xl underline underline-offset-auto;
+  }
+
+  .article-content h2 {
+    @apply text-[40px] mt-2 mb-3 underline underline-offset-auto;
+  }
+
+  .article-content h3 {
+    @apply text-4xl mt-3 mb-3 font-normal underline underline-offset-auto;
+  }
+
+  .article-content h4 {
+    @apply text-3xl;
+  }
+
+  .article-content h5 {
+    @apply text-2xl;
+  }
+
+  .article-content p {
+    @apply text-xl;
+  }
+
+  .article-content a {
+    @apply text-blue-700 underline underline-offset-4;
+  }
+
+  .article-content pre {
+    @apply w-full max-w-[1100px] my-4 mx-auto bg-gray-800 text-white px-0 !pl-14 !py-3 rounded-lg overflow-scroll;
+  }
+
+  .article-content :not(pre) > code {
+    @apply bg-slate-400 text-white italic;
+  }
+
+  .article-content blockquote {
+    @apply my-3 ml-2 pl-4 text-[#858484] italic relative;
+  }
+
+  .article-content blockquote::before {
+    content: "";
+    @apply absolute left-[0] h-full w-1 bg-slate-400 rounded-full;
+  }
+
+  .article-content table {
+    @apply m-2;
+  }
+
+  .article-content th {
+    @apply border-solid border-2 border-black px-5 bg-slate-200;
+  }
+
+  .article-content td {
+    @apply border-solid border-2 border-black px-5;
+  }
+
+  .article-content ul {
+    @apply list-disc list-inside pl-2;
+  }
+
+  .article-content li::marker {
+    @apply !mr-2;
+  }
+}

@@ -16,9 +16,21 @@ import "prismjs/components/prism-java";
 import "prismjs/components/prism-ruby";
 import "prismjs/components/prism-python";
 
+import "@/app/style/articleStyle.css";
+
 type Props = {
   content: string;
 };
+
+declare global {
+  interface Window {
+    twttr?: {
+      widgets: {
+        load: (element?: Element) => void;
+      };
+    };
+  }
+}
 
 export default function SyntaxHighlighter({ content }: Props) {
   const [isClient, setIsClient] = useState(false);
@@ -34,8 +46,25 @@ export default function SyntaxHighlighter({ content }: Props) {
         block.classList.add("line-numbers", "copy-to-clipboard"); // プラグインのクラスを追加
         Prism.highlightElement(block);
       });
+
+      if (window.twttr && window.twttr.widgets) {
+        window.twttr.widgets.load(containerRef.current);
+      }
     }
   }, [isClient, content]);
+
+  useEffect(() => {
+    if (
+      !document.querySelector(
+        "script[src='https://platform.twitter.com/widgets.js']"
+      )
+    ) {
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
 
   if (!isClient) {
     return <div>Loading the content...</div>;
@@ -44,7 +73,7 @@ export default function SyntaxHighlighter({ content }: Props) {
   return (
     <div
       ref={containerRef}
-      className="prose"
+      className="prose article-content"
       dangerouslySetInnerHTML={{
         __html: content,
       }}
