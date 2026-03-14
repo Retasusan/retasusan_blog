@@ -64,13 +64,75 @@ export default function page() {
                   略歴
                 </h4>
                 <div>2024年3月：高校卒業</div>
-                <div>
-                  2024年4月：大学入学、大学の部活にて新入生チーム制作を経験
-                </div>
-                <div>2024年6月：ハッカソン初参加</div>
-                <div>2024年7月：JANOG初参加、ICPC初参加</div>
-                <div>2024年10月：長期インターン採用</div>
-                <div>2025年4月：RubyKaigi初参加</div>
+                <div>2024年4月：大学入学</div>
+                <div>2024年10月：アプリケーション開発の長期インターンシップ採用</div>
+                <div>2025年11月：上記インターンシップを辞職</div>
+                <div>2025年11月：アルバイト(ネットワークエンジニア)採用</div>
+              </div>
+
+              <div className="m-5">
+                <h4 className="text-3xl pb-2 border-solid border-gray-400 border-b-2 mb-3">
+                  やってきたこと(イベント参加、ハッカソン出場、NOCなど)
+                </h4>
+                <div>2024年4月：初チーム開発</div>
+                <div>2024年6月：初ハッカソン(登竜門Hack関西)参加：入賞</div>
+                <div>2024年7月：JANOG54一般参加</div>
+                <div>2024年7月：ICPC参加：3完</div>
+                <div>2024年7月：BitSummit一般参加</div>
+                <div>2024年9月：KC3 2024参加：入賞なし</div>
+                <div>2024年9月：技育ハッカソン</div>
+                <div>2024年10月：インターンシップ採用</div>
+                <div>2024年10月：NaniwaNOG2一般参加</div>
+                <div>2024年10月：Kyoto Tech Talk#6参加</div>
+                <div>2024年12月：Kyoto.go#56参加</div>
+                <div>2025年1月：Kyoto.kt キックオフ参加</div>
+                <div>2025年2月：Kyoto.kt#1参加</div>
+                <div>2025年2月：Progate BAR参加</div>
+                <div>2025年2月：KC3 Hack参加</div>
+                <div>2025年3月：Kyoto.cs#0参加</div>
+                <div>2025年3月：Kyoto.rb参加</div>
+                <div>2025年3月：Kyoto.kt#2参加</div>
+                <div>2025年3月：Kyoto.rb参加</div>
+                <div>2025年4月：Kyoto.cs#1参加</div>
+                <div>2025年4月：RubyKaigi2025 SMSさんの支援で参加</div>
+                <div>2025年4月：SmartHR Drinkup at RubyKaigi 2025 Day 0 参加</div> 
+                <div>2025年4月：RubyKaigi Uchiage by Sakura internet 参加</div> 
+                <div>2025年4月：Wellness up! Morning CrossFit at RubyKaigi Day4参加</div> 
+                <div>2025年5月：Kyoto.cs#2参加</div> 
+                <div>2025年5月：Kyoto.kt#3参加</div> 
+                <div>2025年5月：Kyoto Tech Talk 学生枠にてLT登壇</div> 
+                <div>2025年5月：Kyoto.cs#3 参加</div> 
+                <div>2025年6月：Ropppongi.rb#31参加</div> 
+              <div>2025年6月：ANDPAD ✖️ 関西Ruby会議08 Day0 晩餐会 参加</div> 
+                <div>2025年6月：関西Ruby会議参加</div> 
+                <div>2025年7月：ICPC参加：1完</div> 
+                <div>2025年7月：Cloudflare Workers Tech Talk in Kyoto#1 参加</div> 
+                <div>2025年7月：Kyoto.kt#4参加</div> 
+                <div>2025年7月：NaniwaNOG NOC 採択</div> 
+                <div>2025年7月：SECCON Beginners CTF 2025 参加：最終222位</div> 
+                <div>2025年8月：SPAJAM：優秀賞</div> 
+                <div>2025年8月：Kyoto.なんか#7参加</div> 
+                <div>2025年8月：NaniwaNOG NOCとして参加</div> 
+                <div>2025年8月：ICTSC予選：通過</div> 
+                <div>2025年9月：SmartHR夏季インターンシップ参加</div> 
+                <div>2025年9月：TwoGateハッカソン参加</div> 
+                <div>2025年9月：Roppongi.rb Proposals on Rails 参加</div> 
+                <div>2025年9月：Kaigi on Rails 参加</div> 
+                <div>2025年10月：JANOG NOC採択</div> 
+                <div>2025年10月：Kyoto.rb Meetup 参加</div> 
+                <div>2025年11月：Kyoto.kt#5参加</div> 
+                <div>2025年11月：まっちゃ139勉強会</div> 
+                <div>2025年12月：Kyoto Teck Talk#9 参加</div> 
+                <div>2025年12月：ICTSC 二時予選：敗退</div> 
+                <div>2025年12月：Kyoto.rb Meetup 参加</div> 
+                <div>2026年1月：Kyoto.kt#6 参加</div> 
+                <div>2026年1月：「つながらない」から始めるネットワーク入門</div> 
+                <div>2026年2月：JANOC NOC(ケーブルチーム)として参加</div> 
+                <div>2026年2月：さくらの夕べ in 大阪 参加</div> 
+                <div>2026年2月：Go College 参加</div> 
+                <div>2026年2月：KC3 Hack 参加</div> 
+                <div>2026年2月：ケーブルテクノフェア in Kansai 2026 参加</div> 
+                <div>2026年2月：ネットワークゆるLT大会 in 京都 参加</div>
               </div>
 
               <div className="m-5">
