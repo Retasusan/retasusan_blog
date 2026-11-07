@@ -1,0 +1,13 @@
+{
+  "name": "Retasusan | Portfolio",
+  "short_name": "Retasusan",
+  "description": "Retasusanの制作物と活動のポートフォリオ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0f0eb",
+  "theme_color": "#39423d",
+  "icons": [
+    { "src": "/icon-192x192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512x512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

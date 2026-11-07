@@ -1,0 +1,61 @@
+.portfolio { width: 100%; max-width: 780px; margin: 0 auto; padding: 0 clamp(24px,4vw,64px) 20px; }
+.intro { padding: 100px 0 82px; }
+.introLabel { color: var(--muted); font-size: 11px; margin-bottom: 34px; letter-spacing: .08em; }
+.intro h1 { font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif; font-size: clamp(28px,3.6vw,40px); font-weight: 500; line-height: 1.65; letter-spacing: .025em; }
+.intro h1 span { display: block; }
+.introText { color: var(--muted); max-width: 42em; margin-top: 28px; font-size: 14px; line-height: 2.15; }
+.introLink { display: inline-block; margin-top: 24px; font-size: 12px; color: var(--link); text-decoration: underline; text-underline-offset: 4px; }
+.section { padding-top: 70px; scroll-margin-top: 35px; }
+.sectionHeader { margin-bottom: 26px; }
+.sectionHeader h2 { font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif; font-size: 20px; font-weight: 500; letter-spacing: .025em; }
+.sectionNote { color: var(--muted); font-size: 11px; margin-bottom: 18px; line-height: 1.9; }
+.projectCard { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 27px; border-top: 1px solid var(--line); padding: 27px 0; scroll-margin-top: 30px; }
+.projectCard:last-child { border-bottom: 1px solid var(--line); }
+.projectCategory { color: var(--muted); font-size: 10px; }
+.projectHeading h3 { font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif; font-weight: 500; font-size: 18px; margin-top: 9px; line-height: 1.7; overflow-wrap: anywhere; }
+.projectSummary { font-size: 12px; line-height: 1.9; margin-top: 9px; }
+.technologyList { display: flex; flex-wrap: wrap; color: var(--muted); margin-top: 13px; font-size: 10px; line-height: 1.8; }
+.technologyList li:not(:last-child)::after { content: "/"; margin: 0 7px; }
+.projectBody { min-width: 0; }
+.projectDescription { font-size: 12px; line-height: 2; color: var(--muted); }
+.projectLinks { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 17px; font-size: 11px; color: var(--link); }
+.projectLinks a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #a9b5a9; }
+.projectImage { margin-bottom: 20px; }
+.projectImage img { width: 100%; height: auto; }
+.featuredProject { grid-template-columns: 1fr; gap: 18px; padding-top: 27px; padding-bottom: 34px; }
+.featuredProject h3 { font-size: 28px; }
+.featuredProject .projectSummary { font-size: 13px; }
+.featuredProject .projectDescription { max-width: 43em; font-size: 13px; }
+.biography { font-size: 13px; line-height: 2.1; }
+.personalNote { font-size: 12px; color: var(--muted); margin-top: 21px; }
+.interests { display: grid; grid-template-columns: 4em minmax(0,1fr); gap: 14px; margin-top: 26px; font-size: 12px; }
+.interests dt { color: var(--muted); }
+.skillsList { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 15px 0; }
+.skillGroup { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 12px 24px; padding: 12px 0; font-size: 12px; }
+.skillGroup h3 { color: var(--ink); font-weight: 400; }
+.skillGroup p,.skillGroup .markdown { color: var(--muted); line-height: 2; }
+.skillGroup .markdown { grid-column: 2; }
+.activityList { border-bottom: 1px solid var(--line); }
+.activity { border-top: 1px solid var(--line); }
+.activity > summary { display: grid; grid-template-columns: minmax(0,1fr) 85px 12px; align-items: baseline; gap: 16px; padding: 16px 0; list-style: none; cursor: pointer; }
+.activity > summary::-webkit-details-marker { display: none; }
+.activity > summary::after { content: "+"; color: var(--muted); font-size: 13px; }
+.activity[open] > summary::after { content: "−"; }
+.activity > summary:hover .activityTitle { color: var(--link); }
+.activityHeading { min-width: 0; }
+.activityKind { display: block; color: var(--muted); font-size: 10px; margin-bottom: 3px; }
+.activityTitle { font-size: 13px; line-height: 1.9; }
+.activityPeriod { display: flex; flex-direction: column; color: var(--muted); font-size: 10px; text-align: right; line-height: 1.5; }
+.periodSeparator { font-size: 9px; }
+.activityContent { padding: 0 0 22px; }
+.activityDescription { color: var(--muted); font-size: 12px; line-height: 2; }
+.activityLinks { display: flex; flex-wrap: wrap; gap: 8px 19px; font-size: 11px; color: var(--link); margin-top: 13px; }
+.activityLinks a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #a9b5a9; }
+.contactList > div { display: grid; grid-template-columns: 1fr 1.5fr; gap: 25px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 12px; }
+.contactList > div:last-child { border-bottom: 1px solid var(--line); }
+.contactList dd { color: var(--muted); }
+.contactList a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.emptyNote { color: var(--muted); padding: 25px 0; font-size: 12px; }
+.subpage { padding-top: 40px; }
+@media (max-width: 1200px) and (min-width: 961px) { .projectCard { grid-template-columns: 1fr; gap: 18px; } .skillGroup { grid-template-columns: 1fr; gap: 6px; } .skillGroup .markdown { grid-column: 1; } }
+@media (max-width: 600px) { .portfolio { padding: 0 24px 20px; } .intro { padding: 54px 0 40px; } .intro h1 { font-size: 18px; } .introLabel { margin-bottom: 25px; } .section { padding-top: 45px; } .projectCard { grid-template-columns: 1fr; gap: 18px; } .featuredProject h3 { font-size: 23px; } .skillGroup { grid-template-columns: 1fr; gap: 5px; } .skillGroup .markdown { grid-column: 1; } .activity > summary { grid-template-columns: minmax(0,1fr) 72px 10px; gap: 10px; } .activityTitle { font-size: 12px; } .contactList > div { grid-template-columns: 1fr 1.3fr; gap: 16px; } .subpage { padding-top: 25px; } }

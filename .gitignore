@@ -15,6 +15,9 @@
 
 # next.js
 /.next/
+/.nuxt/
+/.output/
+/.data/
 /out/
 
 # production
@@ -38,3 +41,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated from the Markdown management folder
+/src/content/generated.ts
+/src/content/generated.ts.*.tmp
+/.frontmatter/cache/
+/.frontmatter/database/

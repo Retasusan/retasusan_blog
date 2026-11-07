@@ -1,0 +1,17 @@
+.sidebar { position: sticky; top: 0; height: 100svh; overflow-y: auto; display: flex; flex-direction: column; justify-content: space-between; padding: 42px clamp(28px,4vw,62px); color: #c9c0b2; background: var(--sidebar); }
+.sidebarInner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,3vw,50px); }
+.identity { min-width: 0; }
+.name { color: #f2eadc; font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif; font-size: 21px; line-height: 1.5; letter-spacing: .04em; }
+.tagline { font-size: 11px; line-height: 1.7; margin-top: 5px; color: #b9c3ba; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; margin-top: 24px; filter: grayscale(.3); }
+.description { font-size: 11px; line-height: 1.9; color: #b9c3ba; margin-top: 18px; }
+.nav { display: grid; gap: 21px; align-content: start; }
+.nav > a { display: block; color: #f2eadc; font-size: 14px; line-height: 1.8; }
+.nav > a span { display: block; color: #b9c3ba; font-size: 11px; }
+.nav > a:hover,.nav > a[aria-current] { color: #d9b99c; }
+.nav > a[aria-current]::before { content: "·"; position: absolute; margin-left: -12px; }
+.sidebarBottom { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 45px; font-size: 11px; color: #b9c3ba; }
+.sidebarBottom a:hover { color: #f0f0e9; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 1200px) and (min-width: 961px) { .sidebar { padding: 28px; } .sidebarInner { gap: 22px; } }
+@media (max-width: 960px) { .sidebar { position: relative; height: auto; overflow: visible; padding: 26px 30px; } .sidebarInner { grid-template-columns: 1fr 2fr; gap: 40px; } .nav { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px 24px; } .description { display: none; } .avatar { margin-top: 15px; } .sidebarBottom { margin-top: 26px; } }
+@media (max-width: 600px) { .sidebar { padding: 25px 24px; } .sidebarInner { grid-template-columns: 1fr; gap: 27px; } .identity { position: relative; padding-right: 55px; } .avatar { position: absolute; top: 0; right: 0; margin: 0; } .nav { gap: 18px 15px; } .nav > a { font-size: 12px; } .nav > a span { font-size: 10px; } .sidebarBottom { gap: 20px; font-size: 10px; } }

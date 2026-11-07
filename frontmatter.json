@@ -1,0 +1,355 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "制作物",
+      "path": "[[workspace]]/content/projects",
+      "contentTypes": [
+        "project"
+      ],
+      "filePrefix": ""
+    },
+    {
+      "title": "活動・仕事",
+      "path": "[[workspace]]/content/activities",
+      "contentTypes": [
+        "activity"
+      ],
+      "filePrefix": ""
+    },
+    {
+      "title": "スキル",
+      "path": "[[workspace]]/content/skills",
+      "contentTypes": [
+        "skill"
+      ],
+      "filePrefix": ""
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "project",
+      "pageBundle": false,
+      "template": "[[workspace]]/content/_templates/project.md",
+      "previewPath": "/#works",
+      "fields": [
+        {
+          "name": "title",
+          "title": "名前",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "summary",
+          "title": "一言での説明",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "category",
+          "title": "種類",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "technologies",
+          "title": "使った技術",
+          "type": "list"
+        },
+        {
+          "name": "links",
+          "title": "出典・成果物のリンク",
+          "type": "block",
+          "fieldGroup": [
+            "link"
+          ]
+        },
+        {
+          "name": "featured",
+          "title": "大きく掲載",
+          "type": "boolean"
+        },
+        {
+          "name": "image",
+          "title": "スクリーンショット",
+          "type": "fields",
+          "fields": [
+            {
+              "name": "src",
+              "title": "パス（/projects/ファイル名）",
+              "type": "string",
+              "single": true
+            },
+            {
+              "name": "alt",
+              "title": "画像の説明",
+              "type": "string",
+              "single": true
+            }
+          ]
+        },
+        {
+          "name": "id",
+          "title": "固定ID（省略時はファイル名）",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "order",
+          "title": "表示順（小さい数を先に表示）",
+          "type": "number"
+        },
+        {
+          "name": "draft",
+          "title": "下書き",
+          "type": "draft",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "activity",
+      "pageBundle": false,
+      "template": "[[workspace]]/content/_templates/activity.md",
+      "previewPath": "/#activities",
+      "fields": [
+        {
+          "name": "title",
+          "title": "何をしたか",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "date",
+          "title": "開始日（年・年月・年月日）",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "endDate",
+          "title": "終了日（継続中は present）",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "kind",
+          "title": "種類",
+          "type": "choice",
+          "choices": [
+            {
+              "id": "work",
+              "title": "仕事"
+            },
+            {
+              "id": "event",
+              "title": "イベント"
+            },
+            {
+              "id": "project",
+              "title": "制作"
+            },
+            {
+              "id": "learning",
+              "title": "学び"
+            }
+          ]
+        },
+        {
+          "name": "links",
+          "title": "出典・成果物のリンク",
+          "type": "block",
+          "fieldGroup": [
+            "link"
+          ]
+        },
+        {
+          "name": "id",
+          "title": "固定ID（省略時はファイル名）",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "order",
+          "title": "表示順（小さい数を先に表示）",
+          "type": "number"
+        },
+        {
+          "name": "draft",
+          "title": "下書き",
+          "type": "draft",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "skill",
+      "pageBundle": false,
+      "template": "[[workspace]]/content/_templates/skill.md",
+      "previewPath": "/#skills",
+      "fields": [
+        {
+          "name": "title",
+          "title": "グループ名",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "technologies",
+          "title": "技術",
+          "type": "list"
+        },
+        {
+          "name": "id",
+          "title": "固定ID（省略時はファイル名）",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "order",
+          "title": "表示順（小さい数を先に表示）",
+          "type": "number"
+        },
+        {
+          "name": "draft",
+          "title": "下書き",
+          "type": "draft",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "profile",
+      "fields": [
+        {
+          "name": "name",
+          "title": "名前",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "tagline",
+          "title": "肩書き・紹介",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "headline",
+          "title": "トップの見出し（1〜3行）",
+          "type": "list"
+        },
+        {
+          "name": "description",
+          "title": "短い紹介文",
+          "type": "string",
+          "single": false
+        },
+        {
+          "name": "personalNote",
+          "title": "ひとこと",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "interests",
+          "title": "関心",
+          "type": "list"
+        },
+        {
+          "name": "socials",
+          "title": "アカウント",
+          "type": "block",
+          "fieldGroup": [
+            "social"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "site",
+      "fields": [
+        {
+          "name": "sections",
+          "title": "表示順と表示・非表示",
+          "type": "block",
+          "fieldGroup": [
+            "section"
+          ]
+        }
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.fieldGroups": [
+    {
+      "id": "link",
+      "labelField": "label",
+      "fields": [
+        {
+          "name": "label",
+          "title": "リンク名",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "href",
+          "title": "URL",
+          "type": "string",
+          "single": true
+        }
+      ]
+    },
+    {
+      "id": "social",
+      "labelField": "label",
+      "fields": [
+        {
+          "name": "label",
+          "title": "名前",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "href",
+          "title": "URL",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "description",
+          "title": "説明",
+          "type": "string",
+          "single": true
+        }
+      ]
+    },
+    {
+      "id": "section",
+      "labelField": "label",
+      "fields": [
+        {
+          "name": "id",
+          "title": "セクション",
+          "type": "choice",
+          "choices": [
+            "works",
+            "about",
+            "skills",
+            "activities",
+            "contact"
+          ]
+        },
+        {
+          "name": "label",
+          "title": "ナビゲーションの名前",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "enabled",
+          "title": "表示",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    }
+  ]
+}
