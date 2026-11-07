@@ -3,7 +3,7 @@ type: "activity"
 id: "smarthr-internship-2025"
 date: "2025-09"
 title: "SmartHR サマーインターン／チーム優勝"
-kind: "work"
+kind: "internship"
 links:
   - label: "SmartHR Tech Blog"
     href: "https://tech.smarthr.jp/entry/2026/01/15/193344"

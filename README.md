@@ -98,6 +98,19 @@ NUXT_MICROCMS_API_KEY=your-api-key
 認証情報は Nitro のサーバー側だけで使用する。未設定では一覧は空状態、記事詳細は404になる。
 検索・タグ絞り込みは取得した直近100件が対象。取得エラーは502として扱う。
 
+## Cloudflare Workers
+
+Cloudflare Workers へは Wrangler でデプロイできる。`portfolio.retasusan.com` を Custom Domain として設定してある。初回は Cloudflare にログインしてから実行する。
+
+```sh
+npx wrangler login
+npm run deploy
+npx wrangler secret put API_KEY
+```
+
+Cloudflare では `API_KEY` を Secret として登録し、`SERVICE_DOMAIN` は Worker の環境変数（Variables）として設定する。ローカルの `wrangler dev` では `.dev.vars.example` を `.dev.vars` にコピーして値を設定する。.dev.vars は Git 管理対象外。
+`npm run preview` は Cloudflare Workers 用にビルドして Wrangler のローカル実行環境で確認する。
+
 ## 出典と設計
 
 - [出典メモ](docs/content-sources.md): 公開 Scrapbox とリポジトリから取り込んだ実績。

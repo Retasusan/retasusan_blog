@@ -4,7 +4,7 @@ id: "freee-internship-2026"
 date: "2026-08-17"
 endDate: "2026-08-28"
 title: "freee インターン／SRE船団 AI Ops"
-kind: "work"
+kind: "internship"
 links:
   - label: "参加記事"
     href: "https://retasusan.hatenadiary.com/entry/2026/09/10/130503"

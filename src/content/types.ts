@@ -35,7 +35,7 @@ export type Activity = {
   endDate?: string;
   title: string;
   description?: string;
-  kind: "work" | "event" | "project" | "learning";
+  kind: "work" | "internship" | "conference" | "hackathon" | "event" | "project" | "learning";
   links?: ExternalLink[];
 };
 

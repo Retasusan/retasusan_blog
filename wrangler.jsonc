@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "retasusan-blog",
+  "compatibility_date": "2026-11-07",
+  "routes": [
+    {
+      "pattern": "portfolio.retasusan.com",
+      "custom_domain": true
+    }
+  ],
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  }
+}

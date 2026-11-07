@@ -4,7 +4,7 @@ id: "rubykaigi-2025"
 date: "2025-04-16"
 endDate: "2025-04-18"
 title: "RubyKaigi 2025 参加"
-kind: "event"
+kind: "conference"
 links:
   - label: "参加記事"
     href: "https://tech.bm-sms.co.jp/entry/2025/05/14/110000"

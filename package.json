@@ -7,7 +7,9 @@
     "prebuild": "npm run content:build",
     "build": "nuxt build",
     "start": "node .output/server/index.mjs",
-    "preview": "nuxt preview",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "npm run content:build && nuxt typecheck && tsc -p tsconfig.content.json",
     "content:build": "node --import tsx scripts/content-build.ts",
@@ -43,7 +45,8 @@
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.0.0",
-    "vue-tsc": "^3.0.0"
+    "vue-tsc": "^3.0.0",
+    "wrangler": "^4.158.0"
   },
   "type": "module"
 }

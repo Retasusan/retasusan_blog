@@ -6,8 +6,12 @@ type Endpoint = "articles" | "notifications";
 
 function getClient(event: H3Event) {
   const config = useRuntimeConfig(event);
-  const serviceDomain = process.env.SERVICE_DOMAIN || config.microcmsServiceDomain;
-  const apiKey = process.env.API_KEY || config.microcmsApiKey;
+  const cloudflareEnv = event.context.cloudflare?.env as {
+    SERVICE_DOMAIN?: string;
+    API_KEY?: string;
+  } | undefined;
+  const serviceDomain = cloudflareEnv?.SERVICE_DOMAIN || process.env.SERVICE_DOMAIN || config.microcmsServiceDomain;
+  const apiKey = cloudflareEnv?.API_KEY || process.env.API_KEY || config.microcmsApiKey;
   return serviceDomain && apiKey ? createClient({ serviceDomain, apiKey }) : null;
 }
 

@@ -1,5 +1,12 @@
 export default defineNuxtConfig({
-  compatibilityDate: "2026-10-30",
+  compatibilityDate: "2026-11-07",
+  nitro: {
+    preset: "cloudflare_module",
+    cloudflare: {
+      deployConfig: true,
+      nodeCompat: true,
+    },
+  },
   srcDir: "app/",
   devtools: { enabled: false },
   telemetry: false,

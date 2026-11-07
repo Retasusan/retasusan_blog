@@ -91,7 +91,7 @@ draft: true
 - `title` と `date` は必須。
 - 日付は `YYYY` / `YYYY-MM` / `YYYY-MM-DD`。元の記録の精度を維持し、年・月しかわからなければ日付は補わない。
 - `endDate` は任意。継続中は `present`、終了したら実際の時期に変える。
-- `kind` は `work`（仕事）、`event`（イベント）、`project`（制作）、`learning`（学び）。省略時は `event`。
+- `kind` は `conference`（カンファレンス）、`internship`（インターン）、`hackathon`（ハッカソン）、`event`（イベント）、`work`（職歴）、`project`（制作）、`learning`（学び）。省略時は `event`。
 - 通常は日付の新しい順。`order` を設定した項目は、その数値を優先する。未指定は `1000`、同じ値なら日付の新しい順。
 - 具体的な担当内容や成果は本文、出典は `links` に書く。
 - 存在しない日付、終了日の逆転、壊れた URL は検証でエラーになる。

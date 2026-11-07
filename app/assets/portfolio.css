@@ -36,6 +36,9 @@
 .skillGroup p,.skillGroup .markdown { color: var(--muted); line-height: 2; }
 .skillGroup .markdown { grid-column: 2; }
 .activityList { border-bottom: 1px solid var(--line); }
+.activityGroup + .activityGroup { margin-top: 38px; }
+.activityGroupTitle { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif; font-size: 16px; font-weight: 500; }
+.activityGroupTitle span { color: var(--muted); font-family: inherit; font-size: 11px; }
 .activity { border-top: 1px solid var(--line); }
 .activity > summary { display: grid; grid-template-columns: minmax(0,1fr) 85px 12px; align-items: baseline; gap: 16px; padding: 16px 0; list-style: none; cursor: pointer; }
 .activity > summary::-webkit-details-marker { display: none; }

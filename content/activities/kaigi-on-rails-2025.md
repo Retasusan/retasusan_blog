@@ -4,7 +4,7 @@ id: "kaigi-on-rails-2025"
 date: "2025-09-26"
 endDate: "2025-09-27"
 title: "Kaigi on Rails 2025 参加"
-kind: "event"
+kind: "conference"
 links:
   - label: "参加記録"
     href: "https://scrapbox.io/retasusan/2025%2F09%2F26%20~%2027%20Kaigi%20on%20Rails%E5%8F%82%E5%8A%A0"
