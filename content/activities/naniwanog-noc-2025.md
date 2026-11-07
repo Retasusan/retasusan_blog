@@ -3,7 +3,7 @@ type: "activity"
 id: "naniwanog-noc-2025"
 date: "2025-08-29"
 title: "NaniwaNOG NOC／バックボーンチーム"
-kind: "event"
+kind: "conference"
 links:
   - label: "活動記録"
     href: "https://scrapbox.io/retasusan/2025%2F8%2F29%20NaniwaNOG%20NOC(%E6%9C%AC%E7%95%AA)"
