@@ -53,7 +53,6 @@ onBeforeUnmount(() => { disconnect(); removePageHook?.(); });
           :aria-current="(route.path === '/' && activeSection === section.id) || (route.path === '/about' && section.id === 'about') ? 'location' : undefined"
           @click="activeSection = section.id"
         >{{ section.label }}<span>{{ section.id === 'works' ? 'Projects' : section.id === 'about' ? 'About' : section.id === 'skills' ? 'Tools' : section.id === 'activities' ? 'Archive' : 'Elsewhere' }}</span></NuxtLink>
-        <NuxtLink to="/articles" :aria-current="route.path.startsWith('/articles') ? 'page' : undefined">記事<span>Writing</span></NuxtLink>
       </nav>
     </div>
     <div class="sidebarBottom">
