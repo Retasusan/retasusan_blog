@@ -12,7 +12,7 @@ img { display: block; max-width: 100%; height: auto; }
 button,a,input { -webkit-tap-highlight-color: transparent; }
 ::selection { background: #c9d3ca; color: #263b2b; }
 :focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
-.site-shell { display: grid; grid-template-columns: 42% minmax(0,1fr); min-height: 100svh; }
+.site-shell { display: grid; grid-template-columns: minmax(280px, 32%) minmax(0,1fr); min-height: 100svh; }
 .content-pane { min-width: 0; display: flex; flex-direction: column; background: var(--paper); min-height: 100svh; }
 #main-content { flex: 1; }
 .page-content { width: 100%; max-width: 850px; margin: 0 auto; padding: 54px clamp(28px,5vw,76px) 78px; }
