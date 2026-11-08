@@ -60,7 +60,7 @@ export const activitySchema = z.object({
   title: text,
   date: periodDateSchema,
   endDate: z.union([z.literal("present"), periodDateSchema]).optional(),
-  kind: z.enum(["work", "internship", "conference", "hackathon", "event", "project", "learning"]).default("event"),
+  kind: z.enum(["work", "internship", "conference", "hackathon", "contest", "event", "project", "learning"]).default("event"),
   links: z.array(link).default([]),
 }).strict().superRefine((value, context) => {
   if (value.endDate && value.endDate !== "present" && lastDay(value.endDate) < new Date(value.date).valueOf()) {

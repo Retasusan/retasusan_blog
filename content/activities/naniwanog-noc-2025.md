@@ -1,8 +1,9 @@
 ---
 type: "activity"
 id: "naniwanog-noc-2025"
-date: "2025-08-29"
-title: "NaniwaNOG NOC／バックボーンチーム"
+date: "2025-08-28"
+endDate: "2025-08-29"
+title: "NaniwaNOG NOC／会場設営・バックボーンチーム"
 kind: "conference"
 links:
   - label: "活動記録"
@@ -10,4 +11,4 @@ links:
 draft: false
 ---
 
-バックボーンチームとして参加し、IX へのコンフィグ投入を経験。ネットワーク構築への理解を深めた。
+前日に会場設営を行い、本番はバックボーンチームとして参加。IX へのコンフィグ投入を経験し、ネットワーク構築への理解を深めた。

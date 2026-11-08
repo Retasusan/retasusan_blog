@@ -151,6 +151,10 @@
             {
               "id": "learning",
               "title": "学び"
+            },
+            {
+              "id": "contest",
+              "title": "コンテスト"
             }
           ]
         },

@@ -6,12 +6,13 @@ import MarkdownBody from "../MarkdownBody.vue";
 defineProps<{ number: number }>();
 const { activities } = usePortfolio();
 const kindLabels: Record<Activity["kind"], string> = {
-  work: "職歴", internship: "インターン", conference: "カンファレンス", hackathon: "ハッカソン", event: "イベント", project: "制作", learning: "学び",
+  work: "職歴", internship: "インターン", conference: "カンファレンス", hackathon: "ハッカソン", contest: "コンテスト", event: "イベント", project: "制作", learning: "学び",
 };
 const groupDefinitions: { id: string; title: string; kinds: Activity["kind"][] }[] = [
   { id: "conference", title: "カンファレンス", kinds: ["conference"] },
   { id: "internship", title: "インターン", kinds: ["internship"] },
   { id: "hackathon", title: "ハッカソン", kinds: ["hackathon"] },
+  { id: "contest", title: "コンテスト", kinds: ["contest"] },
   { id: "event", title: "イベント", kinds: ["event"] },
   { id: "other", title: "職歴・学び・制作", kinds: ["work", "learning", "project"] },
 ];
@@ -24,6 +25,8 @@ const groups = computed(() => groupDefinitions
     <p class="sectionNote">項目を開くと、担当したことや出典を読めます。</p>
     <section v-for="group in groups" :key="group.id" class="activityGroup" :aria-labelledby="`activity-group-${group.id}`">
       <h3 :id="`activity-group-${group.id}`" class="activityGroupTitle">{{ group.title }} <span>{{ group.entries.length }}</span></h3>
+      <details class="activityGroupDetails" :open="group.entries.length <= 4">
+      <summary class="activityGroupSummary">一覧を見る <span>{{ group.entries.length }}件</span></summary>
       <ol class="activityList">
         <li v-for="activity in group.entries" :id="`activity-${activity.id}`" :key="activity.id">
           <details class="activity" :open="activity.endDate === 'present'">
@@ -35,6 +38,7 @@ const groups = computed(() => groupDefinitions
           </details>
         </li>
       </ol>
+      </details>
     </section>
     <p v-if="!activities.length" class="emptyNote">活動の記録を、これから追加していきます。</p>
   </Section>

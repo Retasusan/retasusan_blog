@@ -1,8 +1,9 @@
 ---
 type: "activity"
 id: "janog-icpc-2024"
-date: "2024-07"
-title: "JANOG・ICPC に初参加"
+date: "2024-07-03"
+endDate: "2024-07-05"
+title: "JANOG に一般参加"
 kind: "conference"
 links:
   - label: "活動記録"
@@ -10,4 +11,4 @@ links:
 draft: false
 ---
 
-JANOG に一般参加。ICPC では3問を完答。
+JANOG に一般参加。

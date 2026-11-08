@@ -28,12 +28,12 @@ socials:
   - label: "connpass"
     href: "https://connpass.com/user/Retasusan/"
     description: "イベントへの参加"
-description: "Rails / React での Web アプリ開発と、ネットワークの構築・監視をやっています。最近は SRE とクラウドインフラにも関心があります。"
+description: "Rails / React での Web アプリ開発と、ネットワークの構築・監視を経験。NOC 運用、インターン、チーム開発の実績をまとめています。"
 headline:
-  - "Webアプリと、"
-  - "ネットワークのこと。"
+  - "Web開発とネットワーク運用。"
+  - "作って、動かして、改善する。"
 ---
 
-Web アプリの開発と、ネットワークの構築・監視をやっています。
+Web アプリ開発とネットワーク運用の両方に取り組んでいます。
 
-Rails / React での開発に加えて、ルータ・スイッチの設定や、Prometheus・Grafana を使った監視基盤づくりを経験してきました。インターンや NOC にも参加しています。
+Rails / React を使った Web アプリ開発では、要件に合わせた機能設計とチームでの実装を経験しました。ネットワーク分野では JANOG・NaniwaNOG の NOC に参加し、会場ネットワークの設営やバックボーン運用に携わりました。制作物、担当範囲、活動実績を以下にまとめています。
