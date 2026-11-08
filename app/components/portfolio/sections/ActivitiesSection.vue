@@ -26,7 +26,7 @@ const groups = computed(() => groupDefinitions
     <section v-for="group in groups" :key="group.id" class="activityGroup" :aria-labelledby="`activity-group-${group.id}`">
       <h3 :id="`activity-group-${group.id}`" class="activityGroupTitle">{{ group.title }} <span>{{ group.entries.length }}</span></h3>
       <details class="activityGroupDetails" :open="group.entries.length <= 4">
-      <summary class="activityGroupSummary"><span>{{ group.entries.length }}件</span>{{ group.entries.length > 4 ? '一覧を見る' : '閉じる' }}</summary>
+      <summary class="activityGroupSummary"><span>{{ group.entries.length }}件</span><span class="activityGroupAction activityGroupActionOpen">一覧を見る</span><span class="activityGroupAction activityGroupActionClose">閉じる</span></summary>
       <ol class="activityList">
         <li v-for="activity in group.entries" :id="`activity-${activity.id}`" :key="activity.id">
           <details class="activity" :open="activity.endDate === 'present'">

@@ -40,6 +40,10 @@
 .activityGroupDetails > summary { width: fit-content; color: var(--link); cursor: pointer; font-size: 11px; padding: 3px 0 12px; list-style: none; }
 .activityGroupDetails > summary::-webkit-details-marker { display: none; }
 .activityGroupDetails > summary span { color: var(--muted); margin-left: 7px; }
+.activityGroupDetails > summary .activityGroupAction { color: var(--link); margin-left: 0; }
+.activityGroupDetails > summary .activityGroupActionClose { display: none; }
+.activityGroupDetails[open] > summary .activityGroupActionOpen { display: none; }
+.activityGroupDetails[open] > summary .activityGroupActionClose { display: inline; }
 .activityGroupDetails:not([open]) .activityList li:nth-child(n+4) { display: none; }
 .activity { border-top: 1px solid var(--line); }
 .activity > summary { display: grid; grid-template-columns: minmax(0,1fr) 85px 12px; align-items: baseline; gap: 16px; padding: 16px 0; list-style: none; cursor: pointer; }
