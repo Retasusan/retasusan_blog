@@ -80,7 +80,7 @@ export const profileSchema = z.object({
   title: z.string().optional(),
   name: text,
   tagline: text,
-  headline: z.array(text).min(1).max(3).default(["Webアプリと、", "ネットワークのこと。"]),
+  headline: z.array(text).max(3).default(["Webアプリと、", "ネットワークのこと。"]),
   description: text,
   personalNote: z.string().default(""),
   interests: z.array(text).default([]),

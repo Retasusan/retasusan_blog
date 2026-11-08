@@ -4,7 +4,7 @@ id: "network-engineer-2025"
 date: "2025-12"
 endDate: "present"
 title: "ネットワークエンジニア（アルバイト）"
-kind: "work"
+kind: "internship"
 links:
   - label: "経歴"
     href: "https://scrapbox.io/retasusan/%E7%B5%8C%E6%AD%B4"

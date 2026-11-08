@@ -29,9 +29,7 @@ socials:
     href: "https://connpass.com/user/Retasusan/"
     description: "イベントへの参加"
 description: "Rails / React での Web アプリ開発と、ネットワークの構築・監視を経験。NOC 運用、インターン、チーム開発の実績をまとめています。"
-headline:
-  - "Web開発とネットワーク運用。"
-  - "作って、動かして、改善する。"
+headline: []
 ---
 
 Web アプリ開発とネットワーク運用の両方に取り組んでいます。

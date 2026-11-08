@@ -6,11 +6,11 @@ import MarkdownBody from "../MarkdownBody.vue";
 defineProps<{ number: number }>();
 const { activities } = usePortfolio();
 const kindLabels: Record<Activity["kind"], string> = {
-  work: "職歴", internship: "インターン", conference: "カンファレンス", hackathon: "ハッカソン", contest: "コンテスト", event: "イベント", project: "制作", learning: "学び",
+  work: "インターン・アルバイト", internship: "インターン・アルバイト", conference: "カンファレンス", hackathon: "ハッカソン", contest: "コンテスト", event: "イベント", project: "制作", learning: "学び",
 };
 const groupDefinitions: { id: string; title: string; kinds: Activity["kind"][] }[] = [
   { id: "conference", title: "カンファレンス", kinds: ["conference"] },
-  { id: "internship", title: "インターン", kinds: ["internship"] },
+  { id: "internship", title: "インターン・アルバイト", kinds: ["internship", "work"] },
   { id: "hackathon", title: "ハッカソン", kinds: ["hackathon"] },
   { id: "contest", title: "コンテスト", kinds: ["contest"] },
   { id: "event", title: "イベント", kinds: ["event"] },
@@ -26,7 +26,7 @@ const groups = computed(() => groupDefinitions
     <section v-for="group in groups" :key="group.id" class="activityGroup" :aria-labelledby="`activity-group-${group.id}`">
       <h3 :id="`activity-group-${group.id}`" class="activityGroupTitle">{{ group.title }} <span>{{ group.entries.length }}</span></h3>
       <details class="activityGroupDetails" :open="group.entries.length <= 4">
-      <summary class="activityGroupSummary"><span>{{ group.entries.length }}件</span><span class="activityGroupAction activityGroupActionOpen">一覧を見る</span><span class="activityGroupAction activityGroupActionClose">閉じる</span></summary>
+      <summary class="activityGroupSummary"><span class="activityGroupAction activityGroupActionOpen">一覧を見る</span><span class="activityGroupAction activityGroupActionClose">閉じる</span></summary>
       <ol class="activityList">
         <li v-for="activity in group.entries" :id="`activity-${activity.id}`" :key="activity.id">
           <details class="activity" :open="activity.endDate === 'present'">

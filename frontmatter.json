@@ -137,8 +137,20 @@
           "type": "choice",
           "choices": [
             {
+              "id": "internship",
+              "title": "インターン・アルバイト"
+            },
+            {
+              "id": "conference",
+              "title": "カンファレンス"
+            },
+            {
+              "id": "hackathon",
+              "title": "ハッカソン"
+            },
+            {
               "id": "work",
-              "title": "仕事"
+              "title": "インターン・アルバイト（旧分類）"
             },
             {
               "id": "event",
